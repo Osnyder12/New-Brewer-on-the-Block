@@ -6,7 +6,7 @@ require 'faraday'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-punk_url = "https://api.punkapi.com/v2/beers?page=2&per_page=80"
+punk_url = "https://api.punkapi.com/v2/beers"
 punk_response = Faraday.get(punk_url)
 parsed_response = JSON.parse(punk_response.body)
 
