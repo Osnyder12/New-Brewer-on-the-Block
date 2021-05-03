@@ -10,51 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2021_05_03_190228) do
+ActiveRecord::Schema.define(version: 2021_05_03_143331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "amounts", force: :cascade do |t|
-    t.bigint "beer_id", null: false
-    t.bigint "ingredient_id", null: false
-    t.decimal "value", null: false
-    t.string "unit", null: false
-    t.index ["beer_id"], name: "index_amounts_on_beer_id"
-    t.index ["ingredient_id"], name: "index_amounts_on_ingredient_id"
-  end
-
   create_table "beers", force: :cascade do |t|
     t.string "name", null: false
-    t.string "description"
-    t.decimal "abv", null: false
+    t.string "description", null: false
+    t.float "abv", null: false
     t.string "image_url"
-    t.integer "ibu"
-    t.decimal "ph", null: false
-    t.decimal "beer_volume_value", null: false
+    t.float "ibu", null: false
+    t.float "ph", null: false
+    t.float "beer_volume_value", null: false
     t.string "beer_volume_unit", null: false
-    t.decimal "boil_volume_value", null: false
+    t.float "boil_volume_value", null: false
     t.string "boil_volume_unit", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "ingredients", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-
-  create_table "mashes", force: :cascade do |t|
-    t.string "mash_temp_value", null: false
-    t.integer "mash_temp_unit", null: false
-    t.integer "mash_temp_duration", null: false
-    t.integer "fermentation_value", null: false
-    t.string "fermentation_unit", null: false
-    t.bigint "beer_id"
-    t.index ["beer_id"], name: "index_mashes_on_beer_id"
   end
 
   create_table "users", force: :cascade do |t|
