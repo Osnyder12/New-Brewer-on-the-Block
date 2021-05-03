@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_29_152829) do
+ActiveRecord::Schema.define(version: 2021_05_03_143331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.decimal "abv", null: false
+    t.string "image_url"
+    t.integer "ibu"
+    t.decimal "ph", null: false
+    t.decimal "beer_volume_value", null: false
+    t.string "beer_volume_unit", null: false
+    t.decimal "boil_volume_value", null: false
+    t.string "boil_volume_unit", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
