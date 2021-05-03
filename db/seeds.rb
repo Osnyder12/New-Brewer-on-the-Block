@@ -1,3 +1,4 @@
+require 'faraday'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -5,8 +6,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-beer1 = Beer.new(name: "Buzz", description: "A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.", abv: 4.5, image_url: "https://images.punkapi.com/v2/keg.png", ibu: 60, ph: 4.4, beer_volume_value: 20, beer_volume_unit: "litres", boil_volume_value: 25, boil_volume_unit: "litres")
-beer1.save
+punk_url = "https://api.punkapi.com/v2/beers?page=2&per_page=80"
+punk_response = Faraday.get(punk_url)
+parsed_response = JSON.parse(punk_response.body)
+
+parsed_response.each do |beer|
+  Beer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"])
+end
+
+
+# beer1 = Beer.new(name: "Buzz", description: "A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.", abv: 4.5, image_url: "https://images.punkapi.com/v2/keg.png", ibu: 60, ph: 4.4, beer_volume_value: 20, beer_volume_unit: "litres", boil_volume_value: 25, boil_volume_unit: "litres")
+
+# beer1.save
 
 # ingredient1 = Ingredient.new(name: "Maris Otter Extra Pale")
 # ingredient2 = Ingredient.new(name: "Caramalt")
