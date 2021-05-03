@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_03_170154) do
+ActiveRecord::Schema.define(version: 2021_05_03_174027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amounts", force: :cascade do |t|
+    t.bigint "beer_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.decimal "value"
+    t.string "unit", null: false
+    t.index ["beer_id"], name: "index_amounts_on_beer_id"
+    t.index ["ingredient_id"], name: "index_amounts_on_ingredient_id"
+  end
 
   create_table "beers", force: :cascade do |t|
     t.string "name", null: false
@@ -34,6 +43,15 @@ ActiveRecord::Schema.define(version: 2021_05_03_170154) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "methods", force: :cascade do |t|
+    t.string "twist"
+    t.integer "mash_temp_value", null: false
+    t.string "mash_temp_unit", null: false
+    t.integer "mash_temp_duration", null: false
+    t.integer "fermentation_value", null: false
+    t.string "fermentation_unit", null: false
   end
 
   create_table "users", force: :cascade do |t|
