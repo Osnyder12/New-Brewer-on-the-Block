@@ -45,7 +45,7 @@ const BeerIndex = (props) => {
 
   return (
     <div>
-      <h1>Select a Homebrewing Recipe!</h1>
+      <h1 className="index-title">Select a Homebrewing Recipe!</h1>
       <ul>{beerList}</ul>
     </div>
   );
