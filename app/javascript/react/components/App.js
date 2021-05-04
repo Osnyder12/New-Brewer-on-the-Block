@@ -1,7 +1,13 @@
-import React from 'react'
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import BeerIndex from "./BeerIndex";
 
 export const App = (props) => {
-  return (<h1>Make It So React</h1>)
-}
+  return (
+    <BrowserRouter>
+      <Route exact path="/" component={BeerIndex} />
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
