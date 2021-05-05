@@ -4,8 +4,11 @@ punk_url = "https://api.punkapi.com/v2/beers"
 punk_response = Faraday.get(punk_url)
 parsed_response = JSON.parse(punk_response.body)
 
+user1 = User.new(email: "beer-reviewer@aol.com", password: "123456")
+user1.save
+
 parsed_response.each do |beer|
-  Beer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"])
+  Beer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"], user: user1)
 end
 
 ingredient1 = Ingredient.new(ingredient_type: "malt", name: "Maris Otter Extra Pale", amount_value: 3.3, amount_unit: "kilograms")
@@ -52,5 +55,5 @@ recipe9.save
 mash1 = Mash.new(mash_temp_value: 64, mash_temp_unit: "celsius", mash_temp_duration: 75, fermentation_value: 19, fermentation_unit: "celsius", beer: Beer.find_by(name: "Buzz"))
 mash1.save
 
-review1 = Review.new(rating: 4, difficulty: 7, comment: "This was super challenging but rewarding in the end!", beer: Beer.find_by(name: "Buzz"))
+review1 = Review.new(rating: 4, difficulty: 7, comment: "This was super challenging but rewarding in the end!", beer: Beer.find_by(name: "Buzz"), user: user1)
 review1.save
