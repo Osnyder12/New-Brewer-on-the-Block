@@ -51,3 +51,6 @@ recipe9.save
 
 mash1 = Mash.new(mash_temp_value: 64, mash_temp_unit: "celsius", mash_temp_duration: 75, fermentation_value: 19, fermentation_unit: "celsius", beer: Beer.find_by(name: "Buzz"))
 mash1.save
+
+review1 = Review.new(rating: 4, difficulty: 7, comment: "This was super challenging but rewarding in the end!", beer: Beer.find_by(name: "Buzz"))
+review1.save
