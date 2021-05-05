@@ -4,13 +4,27 @@
     <title>HomebrewingForBeginners</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%= stylesheet_link_tag 'application', media: 'all' %> <%= csrf_meta_tags %>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <nav class="top-bar">
-      <h1><a href="/">Homebrewing For Beginners</a></h1>
+    <nav class="top-bar navbar">
+      <section class="top-bar-left">
+        <img
+          class="beer-logo"
+          src="https://cdn.iconscout.com/icon/free/png-512/beer-mug-glass-drink-cocktail-emoj-symbol-babr-30679.png"
+          alt="New Brewer on the Block logo"
+          height="100"
+          width="100"
+        />
+        <h1><a href="/">New Brewer on the Block</a></h1>
+      </section>
 
-      <section class="top-bar-section">
-        <ul class="right">
+      <section class="top-bar-right">
+        <ul class="link-section">
           <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
           <%- else -%>
