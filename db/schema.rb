@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 2021_05_04_202248) do
     t.integer "rating", null: false
     t.integer "difficulty", null: false
     t.string "comment"
-    t.bigint "coffee_shop_id", null: false
-    t.index ["coffee_shop_id"], name: "index_reviews_on_coffee_shop_id"
+    t.bigint "beer_id", null: false
+    t.index ["beer_id"], name: "index_reviews_on_beer_id"
   end
 
   create_table "users", force: :cascade do |t|

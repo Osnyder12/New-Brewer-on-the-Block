@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ReviewFormContainer from "./ReviewFormContainer";
+import ReviewsContainer from "./ReviewsContainer";
 
 const BeerShow = (props) => {
-  const [beer, setBeer] = useState([]);
+  const [beer, setBeer] = useState({});
   const [reviews, setReviews] = useState([]);
   const [errors, setErrors] = useState({});
 
@@ -17,7 +18,7 @@ const BeerShow = (props) => {
       }
 
       const parsedBeerResponse = await response.json();
-      setBeer(parsedBeerResponse);
+      setBeer(parsedBeerResponse.beer);
       setReviews(parsedBeerResponse.reviews);
     } catch (error) {
       console.error(`Error in Fetch: ${error.message}`);
@@ -39,7 +40,7 @@ const BeerShow = (props) => {
       });
       if (reviewResponse.ok) {
         const parsedReviewResponse = await reviewResponse.json();
-        setReviews([...reviews, { review: parsedReviewResponse.review }]);
+        setReviews([...reviews, parsedReviewResponse]);
       }
       if (reviewResponse.status === 401 || reviewResponse.status === 422) {
         const errorMessage = await reviewResponse.json();
@@ -55,7 +56,7 @@ const BeerShow = (props) => {
   return (
     <div>
       <h1>{beer.name}</h1>
-      <img claassName="show-page-image" src={beer.image_url}></img>
+      <img className="show-page-image" src={beer.image_url}></img>
       <p>About this Beer: {beer.description}</p>
       <h2>Beer Stats and Brewing Instructions</h2>
       <ul>
@@ -65,6 +66,7 @@ const BeerShow = (props) => {
       </ul>
       <div>
         <ReviewFormContainer addNewReview={addNewReview} setErrors={setErrors} errors={errors} />
+        <ReviewsContainer reviews={reviews} setReviews={setReviews} />
       </div>
     </div>
   );
