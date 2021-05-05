@@ -1,0 +1,46 @@
+$primary: #03244d;
+$secondary: #dd550c;
+
+.navbar {
+  background-color: $primary;
+}
+
+.top-bar-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.beer-logo {
+  margin: 5px 10px;
+}
+
+h1 > a {
+  color: $secondary;
+  margin-left: 10px;
+  font-family: "Bebas Neue", cursive;
+}
+
+section.top-bar-right {
+  background-color: $primary;
+}
+
+ul.link-section {
+  background-color: $primary;
+}
+
+.link-section li {
+  background-color: $secondary;
+  list-style-type: none;
+  margin: 0;
+  padding: 1rem;
+  border-radius: 10%;
+  margin: 10px 5px -5px 5px;
+  padding: 10px 10px;
+}
+
+li > a {
+  color: $primary;
+  font-size: 20px;
+  font-family: "Bebas Neue", cursive;
+}
