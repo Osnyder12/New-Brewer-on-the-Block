@@ -1,17 +1,50 @@
+$primary: #03244d;
+$secondary: #dd550c;
+$tertiary: #496e9c;
+$quaternary: #f68026;
+
+html {
+  background-color: $tertiary;
+  height: 100%;
+}
+
 .column-4 {
   float: left;
   width: 21%;
   padding: 10px;
   margin: 20px;
   height: 250px;
-  border: 2px solid black;
+  border: 2px solid $secondary;
+  border-radius: 23%;
+  background-color: $secondary;
+  color: $primary;
+}
+
+.column-4:hover {
+  background-color: $quaternary;
+  transform: scale(1.25);
 }
 
 .index-title {
   text-align: center;
+  font-family: "Bebas Neue", cursive;
+  color: $primary;
 }
 
 .beer-text {
   text-align: center;
   font: 9px;
+  font-family: "Bebas Neue", cursive;
+  padding: 0px 10px 0px 10px;
+}
+
+div.content {
+  background-color: $tertiary;
+}
+
+.beer-specs ul {
+  text-align: center;
+  font-family: "Bebas Neue", cursive;
+  font-size: 20px;
+  margin: 0px 0px;
 }
