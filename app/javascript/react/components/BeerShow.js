@@ -5,6 +5,7 @@ import ReviewsContainer from "./ReviewsContainer";
 const BeerShow = (props) => {
   const [beer, setBeer] = useState({});
   const [reviews, setReviews] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
   const [errors, setErrors] = useState({});
 
   let beerId = props.match.params.id;
@@ -20,6 +21,7 @@ const BeerShow = (props) => {
       const parsedBeerResponse = await response.json();
       setBeer(parsedBeerResponse.beer);
       setReviews(parsedBeerResponse.reviews);
+      setCurrentUser(parsedBeerResponse.current_user);
     } catch (error) {
       console.error(`Error in Fetch: ${error.message}`);
     }
@@ -32,6 +34,7 @@ const BeerShow = (props) => {
     try {
       const reviewResponse = await fetch(`/api/v1/beers/${beerId}/reviews`, {
         method: "POST",
+        credentials: "same-origin",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -53,6 +56,33 @@ const BeerShow = (props) => {
     }
   };
 
+  const deleteReview = async (reviewId) => {
+    try {
+      const deleteResponse = await fetch(`/api/v1/beers/${beerId}/reviews/${reviewId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ id: reviewId }),
+      });
+      if (deleteResponse.ok) {
+        const parsedDeleteResponse = await deleteResponse.json();
+
+        if (!parsedDeleteResponse.error) {
+          let remainingReviews = reviews.filter((existingReview) => existingReview.id !== reviewId);
+          return setReviews([...remainingReviews]);
+        } else {
+          return console.log(parsedDeleteResponse.error);
+        }
+      }
+      const error = new Error(`${deleteResponse.status}: ${deleteResponse.statusText}`);
+      throw error;
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+    }
+  };
+
   return (
     <div>
       <h1>{beer.name}</h1>
@@ -65,8 +95,18 @@ const BeerShow = (props) => {
         <li>ph: {beer.ph}</li>
       </ul>
       <div>
-        <ReviewFormContainer addNewReview={addNewReview} setErrors={setErrors} errors={errors} />
-        <ReviewsContainer reviews={reviews} setReviews={setReviews} />
+        <ReviewFormContainer
+          addNewReview={addNewReview}
+          setErrors={setErrors}
+          errors={errors}
+          currentUser={currentUser}
+        />
+        <ReviewsContainer
+          reviews={reviews}
+          setReviews={setReviews}
+          currentUser={currentUser}
+          deleteReview={deleteReview}
+        />
       </div>
     </div>
   );

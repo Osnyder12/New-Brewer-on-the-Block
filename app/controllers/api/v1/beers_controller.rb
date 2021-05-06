@@ -9,7 +9,8 @@ class Api::V1::BeersController < ApplicationController
     reviews = beer.reviews
     render json: {
       beer: beer,
-      reviews: reviews
+      reviews: reviews,
+      current_user: current_user,
     }
   end
 end

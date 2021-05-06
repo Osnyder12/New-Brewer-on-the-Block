@@ -7,6 +7,9 @@ parsed_response = JSON.parse(punk_response.body)
 user1 = User.new(email: "beer-reviewer@aol.com", password: "123456")
 user1.save
 
+admin1 = User.new(email: "beerAdmin@gmail.com", password: "admin12", role: "admin")
+admin1.save
+
 parsed_response.each do |beer|
   Beer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"], user: user1)
 end
