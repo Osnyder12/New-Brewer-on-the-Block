@@ -55,7 +55,7 @@ const ReviewFormContainer = (props) => {
     <div>
       <form onSubmit={handleFormSubmit}>
         <ErrorList errors={props.errors} />
-        <h2>Add A Review</h2>
+        <h2 className="review-title">Add A Review</h2>
         <div>
           <label>Rating</label>
           <input

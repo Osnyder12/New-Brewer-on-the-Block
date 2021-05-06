@@ -55,17 +55,30 @@ const BeerShow = (props) => {
 
   return (
     <div>
-      <h1>{beer.name}</h1>
-      <img className="show-page-image" src={beer.image_url}></img>
-      <p>About this Beer: {beer.description}</p>
-      <h2>Beer Stats and Brewing Instructions</h2>
-      <ul>
-        <li>abv: {beer.abv}</li>
-        <li>ibu: {beer.ibu}</li>
-        <li>ph: {beer.ph}</li>
-      </ul>
+      <div className="float-container">
+        <h1 className="beer-show-title">{beer.name}</h1>
+        <div className="column-5">
+          <img className="show-page-image" src={beer.image_url}></img>
+        </div>
+        <div className="column-6">
+          <p>
+            About {beer.name}: {beer.description}
+          </p>
+          <h2>Beer Stats and Brewing Instructions</h2>
+          <ul>
+            <li>abv: {beer.abv}</li>
+            <li>ibu: {beer.ibu}</li>
+            <li>ph: {beer.ph}</li>
+          </ul>
+        </div>
+      </div>
       <div>
-        <ReviewFormContainer addNewReview={addNewReview} setErrors={setErrors} errors={errors} />
+        <ReviewFormContainer
+          className="review-form"
+          addNewReview={addNewReview}
+          setErrors={setErrors}
+          errors={errors}
+        />
         <ReviewsContainer reviews={reviews} setReviews={setReviews} />
       </div>
     </div>

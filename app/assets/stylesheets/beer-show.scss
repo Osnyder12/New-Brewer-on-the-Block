@@ -1,4 +1,48 @@
+$primary: #03244d;
+$secondary: #dd550c;
+$tertiary: #496e9c;
+$quaternary: #f68026;
+
+.beer-show-title {
+  text-align: center;
+  font-family: "Bebas Neue", cursive;
+  color: #03244d;
+}
+
 .show-page-image {
   width: 25%;
   height: auto;
+  align-items: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.float-container {
+  padding: 20px;
+}
+
+.column-5 {
+  width: 50%;
+  float: left;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.column-6 {
+  width: 50%;
+  float: left;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid $primary;
+  border-radius: 23%;
+  background-color: $primary;
+  color: $quaternary;
+}
+
+.column-6 h2 {
+  font-size: 25px;
+  color: $quaternary;
 }
