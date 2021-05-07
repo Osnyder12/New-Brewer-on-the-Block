@@ -5,8 +5,8 @@ class Beers < ActiveRecord::Migration[5.2]
       t.string :description, null: false
       t.float :abv, null: false
       t.string :image_url
-      t.float :ibu, null: false
-      t.float :ph, null: false
+      t.float :ibu
+      t.float :ph
       t.float :beer_volume_value, null: false
       t.string :beer_volume_unit, null: false
       t.float :boil_volume_value, null: false

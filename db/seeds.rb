@@ -50,26 +50,26 @@ admin1.save
 # end
 # end
 
-beers = parsed_response.map do |beer|
-  Beer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"], user: user1)
-end
+# beers = parsed_response.map do |beer|
+#   Beer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"], user: user1)
+# end
 
 
-malt_ingredients = parsed_response.map do |beer|
-  beer["ingredients"]["malt"].each do |malt|
-    Ingredient.create(ingredient_type: "malt", name: malt["name"], amount_value: malt["amount"]["value"], amount_unit: malt["amount"]["unit"])
-  end
-end
+# malt_ingredients = parsed_response.map do |beer|
+#   beer["ingredients"]["malt"].each do |malt|
+#     Ingredient.create(ingredient_type: "malt", name: malt["name"], amount_value: malt["amount"]["value"], amount_unit: malt["amount"]["unit"])
+#   end
+# end
 
-hop_ingredients = parsed_response.map do |beer|
-  beer["ingredients"]["hops"].each do |hop|
-    Ingredient.create(ingredient_type: "hop", name: hop["name"], amount_value: hop["amount"]["value"], amount_unit: hop["amount"]["unit"], add_time: hop["add"])
-  end
-end
+# hop_ingredients = parsed_response.map do |beer|
+#   beer["ingredients"]["hops"].each do |hop|
+#     Ingredient.create(ingredient_type: "hop", name: hop["name"], amount_value: hop["amount"]["value"], amount_unit: hop["amount"]["unit"], add_time: hop["add"])
+#   end
+# end
 
-yeast_ingredients = parsed_response.map do |beer|
-    Ingredient.create(ingredient_type: "yeast", name: beer["ingredients"]["yeast"]["name"])
-end
+# yeast_ingredients = parsed_response.map do |beer|
+#     Ingredient.create(ingredient_type: "yeast", name: beer["ingredients"]["yeast"]["name"])
+# end
 
 # beer_mashes = parsed_response.map do |beer|
 #   beer["method"]["mash_temp"].each do |mash|

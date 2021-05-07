@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_05_182714) do
+ActiveRecord::Schema.define(version: 2021_05_07_133410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2021_05_05_182714) do
     t.string "description", null: false
     t.float "abv", null: false
     t.string "image_url"
-    t.float "ibu", null: false
-    t.float "ph", null: false
+    t.float "ibu"
+    t.float "ph"
     t.float "beer_volume_value", null: false
     t.string "beer_volume_unit", null: false
     t.float "boil_volume_value", null: false
@@ -32,31 +32,30 @@ ActiveRecord::Schema.define(version: 2021_05_05_182714) do
     t.index ["user_id"], name: "index_beers_on_user_id"
   end
 
-  create_table "ingredients", force: :cascade do |t|
+  create_table "hop_ingredients", force: :cascade do |t|
     t.string "ingredient_type"
-    t.string "name", null: false
-    t.float "amount_value"
-    t.string "amount_unit"
+    t.string "hop_ingredients", default: [], array: true
+    t.bigint "beer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "add_time"
+    t.index ["beer_id"], name: "index_hop_ingredients_on_beer_id"
+  end
+
+  create_table "malt_ingredients", force: :cascade do |t|
+    t.string "ingredient_type"
+    t.string "malt_ingredients", default: [], array: true
+    t.bigint "beer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beer_id"], name: "index_malt_ingredients_on_beer_id"
   end
 
   create_table "mashes", force: :cascade do |t|
-    t.float "mash_temp_value"
-    t.string "mash_temp_unit"
-    t.float "mash_temp_duration"
+    t.string "mash_temp", default: [], array: true
     t.float "fermentation_value"
     t.string "fermentation_unit"
     t.bigint "beer_id"
     t.index ["beer_id"], name: "index_mashes_on_beer_id"
-  end
-
-  create_table "recipes", force: :cascade do |t|
-    t.bigint "beer_id"
-    t.bigint "ingredient_id"
-    t.index ["beer_id"], name: "index_recipes_on_beer_id"
-    t.index ["ingredient_id"], name: "index_recipes_on_ingredient_id"
   end
 
   create_table "reviews", force: :cascade do |t|
