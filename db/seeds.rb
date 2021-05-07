@@ -14,46 +14,46 @@ admin1.save
 
 
 # parsed_response.each do |beer|
-#   beer["ingredients"]["malt"].each do |malt|
-#     beer["ingredients"]["hops"].each do |hop|
-#       beer["method"]["mash_temp"].each do |mash|
+#   beer["method"]["mash_temp"].each do |mash|
+#     beer["ingredients"]["malt"].each do |malt|
+#       beer["ingredients"]["hops"].each do |hop|
 #         i = 0
 #         while i < parsed_response.length do 
+#           i += 1
 #           beer[i] = Beer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"], user: user1)
 #           Ingredient.create(ingredient_type: "malt", name: malt["name"], amount_value: malt["amount"]["value"], amount_unit: malt["amount"]["unit"])
 #           Ingredient.create(ingredient_type: "hop", name: hop["name"], amount_value: hop["amount"]["value"], amount_unit: hop["amount"]["unit"], add_time: hop["add"])
 #           Mash.create(mash_temp_value: mash["temp"]["value"], mash_temp_unit: mash["temp"]["unit"], mash_temp_duration: mash["duration"], fermentation_value: beer["method"]["fermentation"]["temp"]["value"], fermentation_unit: beer["method"]["fermentation"]["temp"]["unit"], beer: beer[i])
-#           i += 1
 #         end
 #       end
 #     end
 #   end
 # end
 
-beers = parsed_response.each do |beer|
-  c = 0
-  while c < parsed_response.length do
-    beer[c] = Beer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"], user: user1)
-    c += 1
-  end
-end
-
-
-beer_mashes = parsed_response.each do |beer|
-  i = 0
-  while i < parsed_response.length
-  beer["method"]["mash_temp"].each do |mash|
-    Mash.create(mash_temp_value: mash["temp"]["value"], mash_temp_unit: mash["temp"]["unit"], mash_temp_duration: mash["duration"], fermentation_value: beer["method"]["fermentation"]["temp"]["value"], fermentation_unit: beer["method"]["fermentation"]["temp"]["unit"], beer: beer[i])
-  end
-  i += 1
-end
-end
-
-
-
-# beers = parsed_response.map do |beer|
-#   beer = Beer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"], user: user1)
+# c = 0
+# while c < parsed_response.length do
+#   c += 1
+#   parsed_response.each do |beer|
+#       beer[c] = Beer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"], user: user1)
+#     end
 # end
+# binding.pry
+
+
+# beer_mashes = parsed_response.each do |beer|
+#   i = 0
+#   while i < parsed_response.length
+#   beer["method"]["mash_temp"].each do |mash|
+#     Mash.create(mash_temp_value: mash["temp"]["value"], mash_temp_unit: mash["temp"]["unit"], mash_temp_duration: mash["duration"], fermentation_value: beer["method"]["fermentation"]["temp"]["value"], fermentation_unit: beer["method"]["fermentation"]["temp"]["unit"], beer: beer[i])
+#   end
+#   i += 1
+# end
+# end
+
+beers = parsed_response.map do |beer|
+  Beer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"], user: user1)
+end
+
 
 malt_ingredients = parsed_response.map do |beer|
   beer["ingredients"]["malt"].each do |malt|
@@ -73,7 +73,7 @@ end
 
 # beer_mashes = parsed_response.map do |beer|
 #   beer["method"]["mash_temp"].each do |mash|
-#     Mash.create(mash_temp_value: mash["temp"]["value"], mash_temp_unit: mash["temp"]["unit"], mash_temp_duration: mash["duration"], fermentation_value: beer["method"]["fermentation"]["temp"]["value"], fermentation_unit: beer["method"]["fermentation"]["temp"]["unit"], beer: beer)
+#     Mash.create(mash_temp_value: mash["temp"]["value"], mash_temp_unit: mash["temp"]["unit"], mash_temp_duration: mash["duration"], fermentation_value: beer["method"]["fermentation"]["temp"]["value"], fermentation_unit: beer["method"]["fermentation"]["temp"]["unit"], beer_id: beer.id)
 #   end
 # end
 
