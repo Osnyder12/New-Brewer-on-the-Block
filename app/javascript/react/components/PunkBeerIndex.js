@@ -3,6 +3,9 @@ import BeerTile from "./BeerTile";
 
 const PunkBeerIndex = (props) => {
   const [beers, setBeers] = useState([]);
+  const [malts, setMalts] = useState([]);
+  const [hops, sethops] = useState([]);
+  const [yeast, setYeast] = useState([]);
 
   const fetchBeers = async () => {
     try {
@@ -13,7 +16,6 @@ const PunkBeerIndex = (props) => {
         throw error;
       }
       const beerResponseBody = await response.json();
-      debugger;
       setBeers(beerResponseBody.punk_beer);
     } catch (err) {
       console.error("Error in fetch!");
