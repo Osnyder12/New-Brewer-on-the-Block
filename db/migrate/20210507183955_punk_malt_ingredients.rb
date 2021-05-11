@@ -1,9 +1,9 @@
-class Ingredients < ActiveRecord::Migration[5.2]
+class PunkMaltIngredients < ActiveRecord::Migration[5.2]
   def change
-    create_table :malt_ingredients do |t|
+    create_table :punk_malt_ingredients do |t|
       t.string :ingredient_type
       t.string :malt_ingredients, array: true, default: []
-      t.belongs_to :beer
+      t.belongs_to :punk_beer
 
       t.timestamps null: false
     end

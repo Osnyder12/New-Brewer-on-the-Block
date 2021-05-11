@@ -1,6 +1,6 @@
-class Beers < ActiveRecord::Migration[5.2]
+class PunkBeers < ActiveRecord::Migration[5.2]
   def change
-    create_table :beers do |t|
+    create_table :punk_beers do |t|
       t.string :name, null: false
       t.string :description, null: false
       t.float :abv, null: false

@@ -1,62 +1,48 @@
-require 'faraday'
+# require 'faraday'
 
-punk_url = "https://api.punkapi.com/v2/beers"
-punk_response = Faraday.get(punk_url)
-parsed_response = JSON.parse(punk_response.body)
+# punk_url = "https://api.punkapi.com/v2/beers"
+# punk_response = Faraday.get(punk_url)
+# parsed_response = JSON.parse(punk_response.body)
 
-user1 = User.new(email: "beer-reviewer@aol.com", password: "123456")
+user1 = User.new(email: "beer-reviewer@aol.com", password: "password", password_confirmation: "password")
 user1.save
 
-admin1 = User.new(email: "beerAdmin@gmail.com", password: "admin12", role: "admin")
+admin1 = User.new(email: "beerAdmin@gmail.com", password: "password", password_confirmation: "password", role: "admin")
 admin1.save
 
-parsed_response.each do |beer|
-  Beer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"], user: user1)
-end
+beer1 = Beer.new(name: "SMaSH American IPA", description: "For this SMaSH (Single Malt and Single Hop) beer, I chose Mosaic hops, the daughter of American IPA hop stalwart Simcoe. Mosaic hops only became commercially available following the fall 2012 harvest, but they're already picking up steam among home and craft brewers for creating an array of flavors and aromas that have been said to include cedar, stone fruit, tropical fruit, blueberry, and floral notes. To round things out, I paired the Mosaic hops with the sweet, clean Golden Promise pale malt. Think of it as a Scottish equivalent to Maris Otter pale malt.", abv: 6.7, image_url: "https://www.seriouseats.com/thmb/jKeM58rr2uwn_fEKKU4lyiTuGbw=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2013__01__20130130-238963-SMaSH-homebrew-2d65e2d25c7146a9ae9fec066937df85.jpg", ibu: 66, ph: 4.4, beer_volume_value: 20, beer_volume_unit: "litres", boil_volume_value: 25, boil_volume_unit: "litres", user: user1)
+beer1.save
 
-ingredient1 = Ingredient.new(ingredient_type: "malt", name: "Maris Otter Extra Pale", amount_value: 3.3, amount_unit: "kilograms")
-ingredient2 = Ingredient.new(ingredient_type: "malt", name: "Caramalt", amount_value: 0.2, amount_unit: "kilograms")
-ingredient3 = Ingredient.new(ingredient_type: "malt", name: "Munich", amount_value: 0.4, amount_unit: "kilograms")
-ingredient4 = Ingredient.new(ingredient_type: "hop", name: "Fuggles", amount_value: 25, amount_unit: "grams", add_time: "start")
-ingredient5 = Ingredient.new(ingredient_type: "hop", name: "First Gold", amount_value: 25, amount_unit: "grams", add_time: "start")
-ingredient6 = Ingredient.new(ingredient_type: "hop", name: "Fuggles", amount_value: 37.5, amount_unit: "grams", add_time: "middle")
-ingredient7 = Ingredient.new(ingredient_type: "hop", name: "First Gold", amount_value: 37.5, amount_unit: "grams", add_time: "middle")
-ingredient8 = Ingredient.new(ingredient_type: "hop", name: "Cascade", amount_value: 37.5, amount_unit: "grams", add_time: "end")
-ingredient9 = Ingredient.new(ingredient_type: "yeast", name: "Wyeast 1056 - American Ale™")
+mash_one = Mash.new(mash_temp_value: 64, mash_temp_unit: "celsius", mash_temp_duration: 75, fermentation_value: 19, fermentation_unit: "celsius", beer: beer1)
+mash_one.save
 
-ingredient1.save
-ingredient2.save
-ingredient3.save
-ingredient4.save
-ingredient5.save
-ingredient6.save
-ingredient7.save
-ingredient8.save
-ingredient9.save
+hop_ingredients1_array = [
+  {"name"=>"Mosaic hops", "amount"=>{"value"=>0.02, "unit"=>"kilograms"}, "add"=>"start"},
+  {"name"=>"Mosaic hops", "amount"=>{"value"=>0.04, "unit"=>"kilograms"}, "add"=>"middle"},
+  {"name"=>"Mosaic hops", "amount"=>{"value"=>0.05, "unit"=>"kilograms"}, "add"=>"end"}
+]
 
-recipe1 = Recipe.new(beer: Beer.find_by(name: "Buzz"), ingredient: ingredient1)
-recipe2 = Recipe.new(beer: Beer.find_by(name: "Buzz"), ingredient: ingredient2)
-recipe3 = Recipe.new(beer: Beer.find_by(name: "Buzz"), ingredient: ingredient3)
-recipe4 = Recipe.new(beer: Beer.find_by(name: "Buzz"), ingredient: ingredient4)
-recipe5 = Recipe.new(beer: Beer.find_by(name: "Buzz"), ingredient: ingredient5)
-recipe6 = Recipe.new(beer: Beer.find_by(name: "Buzz"), ingredient: ingredient6)
-recipe7 = Recipe.new(beer: Beer.find_by(name: "Buzz"), ingredient: ingredient7)
-recipe8 = Recipe.new(beer: Beer.find_by(name: "Buzz"), ingredient: ingredient8)
-recipe9 = Recipe.new(beer: Beer.find_by(name: "Buzz"), ingredient: ingredient9)
+hop_ingredients1 = HopIngredient.new(ingredient_type: "hop", hop_ingredients: hop_ingredients1_array, beer: beer1)
+hop_ingredients1.save
 
-recipe1.save
-recipe2.save
-recipe3.save
-recipe4.save
-recipe5.save
-recipe6.save
-recipe7.save
-recipe8.save
-recipe9.save
+malt_ingredients1 =  MaltIngredient.new(ingredient_type: "malt", malt_ingredients: [{"name"=>"Maris Otter Extra Pale", "amount"=>{"value"=>5.44, "unit"=>"kilograms"}}], beer: beer1)
+malt_ingredients1.save
 
+yeast_ingredient1 = YeastIngredient.new(ingredient_type: "yeast", name: "Wyeast 1056 American Ale Yeast", beer: beer1)
+yeast_ingredient1.save
 
-mash1 = Mash.new(mash_temp_value: 64, mash_temp_unit: "celsius", mash_temp_duration: 75, fermentation_value: 19, fermentation_unit: "celsius", beer: Beer.find_by(name: "Buzz"))
-mash1.save
+# parsed_response.each do |beer|
+#   PunkBeer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"])
+# end
 
-review1 = Review.new(rating: 4, difficulty: 7, comment: "This was super challenging but rewarding in the end!", beer: Beer.find_by(name: "Buzz"), user: user1)
-review1.save
+# parsed_response.each do |object|
+#     mash_beer = PunkBeer.find_by(name: object["name"])
+#       PunkMash.create(mash_temp_value: object["method"]["mash_temp"][0]["temp"]["value"], mash_temp_unit: object["method"]["mash_temp"][0]["temp"]["unit"], mash_temp_duration: object["method"]["mash_temp"][0]["duration"], fermentation_value: object["method"]["fermentation"]["temp"]["value"], fermentation_unit: object["method"]["fermentation"]["temp"]["unit"], punk_beer: mash_beer)
+# end
+
+# parsed_response.each do |object|
+#   ingredient_beer = PunkBeer.find_by(name: object["name"])
+#   PunkMaltIngredient.create(ingredient_type: "malt", malt_ingredients: object["ingredients"]["malt"], punk_beer: ingredient_beer)
+#   PunkHopIngredient.create(ingredient_type: "hop", hop_ingredients: object["ingredients"]["hops"], punk_beer: ingredient_beer)
+#   PunkYeastIngredient.create(ingredient_type: "yeast", name: object["ingredients"]["yeast"], punk_beer: ingredient_beer)
+# end
