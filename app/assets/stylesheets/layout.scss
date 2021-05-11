@@ -1,0 +1,20 @@
+$primary: #03244d;
+$secondary: #dd550c;
+$tertiary: #496e9c;
+$quaternary: #f68026;
+
+h1.index-title {
+  background-color: $tertiary;
+}
+
+.error {
+  color: #bf3310;
+  font-weight: bold;
+}
+
+.flash-notice {
+  background-color: lightgreen;
+  text-align: center;
+  max-width: 50%;
+  margin: 0 auto;
+}

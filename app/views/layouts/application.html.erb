@@ -35,12 +35,12 @@
       </section>
     </nav>
     <div class="content">
-      <%- flash.each do |key, value| -%>
+      <%- flash.each do |key, value| -%> <% if !flash[:error] %>
       <div class="flash flash-<%= key %>">
         <%= value %>
       </div>
     </div>
-    <%- end -%> <%= yield %> <%= javascript_include_tag 'application' %> <%- if
+    <%- end -%> <%- end -%> <%= yield %> <%= javascript_include_tag 'application' %> <%- if
     Rails.env.development? || Rails.env.test? -%> <%= javascript_tag do %> window.railsEnv = '<%=
     Rails.env %>' <%- end -%> <%- end -%> <%= javascript_pack_tag 'application' %>
   </body>
