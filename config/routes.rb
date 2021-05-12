@@ -12,7 +12,9 @@ Rails.application.routes.draw do
       resources :beers, only: [:index, :show] do
         resources :reviews, only: [:index, :create, :destroy]
       end
-      resources :punk_beers, only: [:index, :show]
+      resources :punk_beers, only: [:index, :show] do
+        resources :punk_reviews, only: [:index, :create, :destroy]
+      end
     end
   end
 end

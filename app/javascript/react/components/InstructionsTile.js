@@ -41,7 +41,6 @@ const InstructionsTile = (props) => {
 
   let hopMiddleString = "";
   if (hopMiddleList.length > 0) {
-    debugger;
     hopMiddleString = " At 15 minutes into the boiling process, add your midway hops.";
   }
 
