@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import IngredientsList from "./IngredientsList";
 import ReviewFormContainer from "./ReviewFormContainer";
 import ReviewsContainer from "./ReviewsContainer";
+import InstructionsTile from "./InstructionsTile";
 
 const PunkBeerShow = (props) => {
   const [beer, setBeer] = useState({});
@@ -110,6 +111,9 @@ const PunkBeerShow = (props) => {
       </div>
       <div>
         <IngredientsList beer={beer} malts={malts} hops={hops} yeast={yeast} />
+      </div>
+      <div>
+        <InstructionsTile beer={beer} malts={malts} hops={hops} yeast={yeast} />
       </div>
       <div>
         <ReviewFormContainer
