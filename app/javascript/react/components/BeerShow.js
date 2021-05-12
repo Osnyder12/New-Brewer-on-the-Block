@@ -4,6 +4,9 @@ import ReviewsContainer from "./ReviewsContainer";
 
 const BeerShow = (props) => {
   const [beer, setBeer] = useState({});
+  const [malts, setMalts] = useState([]);
+  const [hops, setHops] = useState([]);
+  const [yeast, setYeast] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [errors, setErrors] = useState({});
@@ -20,6 +23,9 @@ const BeerShow = (props) => {
 
       const parsedBeerResponse = await response.json();
       setBeer(parsedBeerResponse.beer);
+      setMalts(parsedBeerResponse.malts);
+      setHops(parsedBeerResponse.hops);
+      setYeast(parsedBeerResponse.yeast);
       setReviews(parsedBeerResponse.reviews);
       setCurrentUser(parsedBeerResponse.current_user);
     } catch (error) {

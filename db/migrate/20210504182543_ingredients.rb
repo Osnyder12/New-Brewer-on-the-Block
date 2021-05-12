@@ -1,9 +1,12 @@
 class Ingredients < ActiveRecord::Migration[5.2]
   def change
-    create_table :malt_ingredients do |t|
-      t.string :ingredient_type
-      t.string :malt_ingredients, array: true, default: []
-      t.belongs_to :beer
+    create_table :ingredients do |t|
+      t.string :ingredient_type, null: false
+      t.string :name, null: false
+      t.float :amount_value, null: false
+      t.string :amount_unit, null: false
+      t.string :add_time
+      t.belongs_to :beer, null: false
 
       t.timestamps null: false
     end
