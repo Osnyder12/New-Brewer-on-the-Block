@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_201740) do
+ActiveRecord::Schema.define(version: 2021_05_12_164747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,7 +95,9 @@ ActiveRecord::Schema.define(version: 2021_05_11_201740) do
     t.integer "difficulty", null: false
     t.string "comment"
     t.bigint "punk_beer_id", null: false
+    t.bigint "user_id", null: false
     t.index ["punk_beer_id"], name: "index_punk_reviews_on_punk_beer_id"
+    t.index ["user_id"], name: "index_punk_reviews_on_user_id"
   end
 
   create_table "punk_yeast_ingredients", force: :cascade do |t|

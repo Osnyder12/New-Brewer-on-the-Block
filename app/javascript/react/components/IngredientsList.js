@@ -44,7 +44,6 @@ const IngredientsList = (props) => {
   });
 
   let yeastList = props.yeast.map((yeast) => {
-    debugger;
     return <ul>1 packet of {yeast.name}</ul>;
   });
 

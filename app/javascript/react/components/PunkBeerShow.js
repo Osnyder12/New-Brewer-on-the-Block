@@ -1,4 +1,3 @@
-import { parse } from "@babel/core";
 import React, { useState, useEffect } from "react";
 import IngredientsList from "./IngredientsList";
 import ReviewFormContainer from "./ReviewFormContainer";
@@ -41,7 +40,7 @@ const PunkBeerShow = (props) => {
 
   const addNewReview = async (formPayload) => {
     try {
-      const reviewResponse = await fetch(`/api/v1/beers/${beerId}/reviews`, {
+      const reviewResponse = await fetch(`/api/v1/punk_beers/${beerId}/punk_reviews`, {
         method: "POST",
         credentials: "same-origin",
         headers: {
@@ -67,7 +66,7 @@ const PunkBeerShow = (props) => {
 
   const deleteReview = async (reviewId) => {
     try {
-      const deleteResponse = await fetch(`/api/v1/beers/${beerId}/reviews/${reviewId}`, {
+      const deleteResponse = await fetch(`/api/v1/punk_beers/${beerId}/punk_reviews/${reviewId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -110,10 +109,10 @@ const PunkBeerShow = (props) => {
         </ul>
       </div>
       <div>
-        <IngredientsList beer={beer} malts={malts} hops={hops} yeast={yeast} />
+        <IngredientsList key={beer.id} beer={beer} malts={malts} hops={hops} yeast={yeast} />
       </div>
       <div>
-        <InstructionsTile beer={beer} malts={malts} hops={hops} yeast={yeast} />
+        <InstructionsTile key={beer.id} beer={beer} malts={malts} hops={hops} yeast={yeast} />
       </div>
       <div>
         <ReviewFormContainer
