@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReviewFormContainer from "./ReviewFormContainer";
 import ReviewsContainer from "./ReviewsContainer";
+import IngredientsList from "./IngredientsList";
+import InstructionsTile from "./InstructionsTile";
 
 const BeerShow = (props) => {
   const [beer, setBeer] = useState({});
@@ -100,6 +102,26 @@ const BeerShow = (props) => {
         <li>ibu: {beer.ibu}</li>
         <li>ph: {beer.ph}</li>
       </ul>
+      <div>
+        <IngredientsList
+          key={beer.id}
+          id={beer.id}
+          beer={beer}
+          malts={malts}
+          hops={hops}
+          yeast={yeast}
+        />
+      </div>
+      <div>
+        <InstructionsTile
+          key={beer.id}
+          id={beer.id}
+          beer={beer}
+          malts={malts}
+          hops={hops}
+          yeast={yeast}
+        />
+      </div>
       <div>
         <ReviewFormContainer
           addNewReview={addNewReview}
