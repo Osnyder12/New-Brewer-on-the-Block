@@ -93,16 +93,18 @@ const BeerShow = (props) => {
 
   return (
     <div>
-      <h1>{beer.name}</h1>
-      <img className="show-page-image" src={beer.image_url}></img>
-      <p className="about-beer">About this Beer: {beer.description}</p>
-      <h2>Beer Stats and Brewing Instructions</h2>
-      <ul>
-        <li>abv: {beer.abv}</li>
-        <li>ibu: {beer.ibu}</li>
-        <li>ph: {beer.ph}</li>
-      </ul>
-      <div>
+      <h1 className="beer-title">{beer.name}</h1>
+      <div className="about-section">
+        <div className="column-7">
+          <img className="show-page-image" src={beer.image_url}></img>
+        </div>
+        <div className="about-beer column-7">
+          <p>
+            About this Beer: {beer.description}. ABV: {beer.abv}%, IBU: {beer.ibu}.
+          </p>
+        </div>
+      </div>
+      <div className="ingredients-list">
         <IngredientsList
           key={beer.id}
           id={beer.id}
@@ -112,7 +114,7 @@ const BeerShow = (props) => {
           yeast={yeast}
         />
       </div>
-      <div>
+      <div className="instructions-tile">
         <InstructionsTile
           key={beer.id}
           id={beer.id}
@@ -141,3 +143,51 @@ const BeerShow = (props) => {
 };
 
 export default BeerShow;
+
+// return (
+//   <div>
+//     <h1>{beer.name}</h1>
+//     <img className="show-page-image" src={beer.image_url}></img>
+//     <p className="about-beer">About this Beer: {beer.description}</p>
+//     <h2>Beer Stats and Brewing Instructions</h2>
+//     <ul>
+//       <li>abv: {beer.abv}</li>
+//       <li>ibu: {beer.ibu}</li>
+//       <li>ph: {beer.ph}</li>
+//     </ul>
+//     <div>
+//       <IngredientsList
+//         key={beer.id}
+//         id={beer.id}
+//         beer={beer}
+//         malts={malts}
+//         hops={hops}
+//         yeast={yeast}
+//       />
+//     </div>
+//     <div>
+//       <InstructionsTile
+//         key={beer.id}
+//         id={beer.id}
+//         beer={beer}
+//         malts={malts}
+//         hops={hops}
+//         yeast={yeast}
+//       />
+//     </div>
+//     <div>
+//       <ReviewFormContainer
+//         addNewReview={addNewReview}
+//         setErrors={setErrors}
+//         errors={errors}
+//         currentUser={currentUser}
+//       />
+//       <ReviewsContainer
+//         reviews={reviews}
+//         setReviews={setReviews}
+//         currentUser={currentUser}
+//         deleteReview={deleteReview}
+//       />
+//     </div>
+//   </div>
+// );

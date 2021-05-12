@@ -3,10 +3,6 @@ $secondary: #dd550c;
 $tertiary: #496e9c;
 $quaternary: #f68026;
 
-div#app.grid-container {
-  background-color: $primary;
-}
-
 h1.beer-title {
   color: $secondary;
   font-family: "Bebas Neue", cursive;
@@ -19,7 +15,7 @@ h1.beer-title {
 }
 
 .about-beer {
-  color: $secondary;
+  color: $primary;
 }
 
 form.review-form {
@@ -61,6 +57,10 @@ input[type="button"] {
   background-color: lightgrey;
 }
 
+.review-form h2 {
+  font-family: "Bebas Neue", cursive;
+  color: #03244d;
+}
 div.column-7 img {
   align-items: center;
 }
