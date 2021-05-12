@@ -50,7 +50,7 @@ const InstructionsTile = (props) => {
   }
 
   return (
-    <div>
+    <div className="instructions">
       <h3>Brewing Instructions</h3>
       <li>
         In a 7 gallon pot, add {props.beer.boil_volume_value} {props.beer.boil_volume_unit} of

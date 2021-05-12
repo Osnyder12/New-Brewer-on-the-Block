@@ -1,0 +1,44 @@
+$primary: #03244d;
+$secondary: #dd550c;
+$tertiary: #496e9c;
+$quaternary: #f68026;
+
+div.ingredients-list {
+  margin: auto;
+}
+
+.column-8 {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  margin: auto 0px;
+  height: 250px;
+  list-style-type: none;
+}
+
+.column-8 h3 {
+  color: #03244d;
+  font-family: "Bebas Neue", cursive;
+  text-align: center;
+}
+
+.hop-list h4 {
+  font-size: 20px;
+  color: #496e9c;
+  font-family: "Bebas Neue", cursive;
+}
+
+.ingredients-title {
+  color: #03244d;
+  font-family: "Bebas Neue", cursive;
+  text-align: center;
+}
+
+.ingredients-list {
+  border: 2px solid $tertiary;
+  border-radius: 5%;
+  background-color: $secondary;
+  width: 90%;
+  height: 450px;
+  margin: auto 0;
+}

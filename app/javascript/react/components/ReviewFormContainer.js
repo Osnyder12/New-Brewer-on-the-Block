@@ -56,7 +56,7 @@ const ReviewFormContainer = (props) => {
   if (props.currentUser) {
     reviewForm = (
       <div>
-        <form onSubmit={handleFormSubmit}>
+        <form className="review-form" onSubmit={handleFormSubmit}>
           <ErrorList errors={props.errors} />
           <h2>Add A Review</h2>
           <div>
