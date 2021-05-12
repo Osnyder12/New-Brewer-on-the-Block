@@ -5,7 +5,6 @@ class Api::V1::PunkReviewsController < ApplicationController
   
   def create
     review = PunkReview.new(review_params)
-    binding.pry
     beer = PunkBeer.find(params[:punk_beer_id])
     review.punk_beer = beer
     review.user = current_user
