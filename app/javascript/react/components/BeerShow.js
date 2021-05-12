@@ -95,7 +95,7 @@ const BeerShow = (props) => {
     <div>
       <h1>{beer.name}</h1>
       <img className="show-page-image" src={beer.image_url}></img>
-      <p>About this Beer: {beer.description}</p>
+      <p className="about-beer">About this Beer: {beer.description}</p>
       <h2>Beer Stats and Brewing Instructions</h2>
       <ul>
         <li>abv: {beer.abv}</li>

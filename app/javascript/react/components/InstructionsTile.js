@@ -36,7 +36,7 @@ const InstructionsTile = (props) => {
   });
   let hopStartString = "";
   if (hopStartList.length > 0) {
-    hopStartString = " and your starting hops";
+    hopStartString = " and add your starting hops";
   }
 
   let hopMiddleString = "";
@@ -66,8 +66,8 @@ const InstructionsTile = (props) => {
         water flow through the mash.{hopMiddleString}
       </li>
       <li>
-        Let the wort drain from the strainer into your 7 gallon pot{hopEndString}and allow to cool
-        down to {props.beer.fermentation_value} degrees {props.beer.fermentation_unit}.
+        Let the wort drain from the strainer into your 7 gallon pot{hopEndString}and allow wort to
+        cool down to {props.beer.fermentation_value} degrees {props.beer.fermentation_unit}.
       </li>
       <li>
         Once cooled, transfer the wort into your 5 gallon fermentation tank with burper attached.

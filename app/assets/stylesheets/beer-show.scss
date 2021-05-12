@@ -18,6 +18,10 @@ h1.beer-title {
   height: auto;
 }
 
+.about-beer {
+  color: $secondary;
+}
+
 form.review-form {
   width: 90%;
   height: 400px;
@@ -30,6 +34,31 @@ form.review-form {
 form.review-form h2 {
   color: $primary;
   text-align: center;
+}
+
+form label {
+  text-align: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+input[type="submit"] {
+  background-color: lightgreen;
+  padding: 0.75rem;
+  color: $primary;
+  border: 1px solid $primary;
+  font-weight: bold;
+  display: block;
+  margin: 0 auto;
+}
+
+input[type="button"] {
+  padding: 0.75rem;
+  color: $primary;
+  border: 1px solid $primary;
+  font-weight: bold;
+  display: block;
+  margin: 0 auto;
+  background-color: lightgrey;
 }
 
 div.column-7 img {

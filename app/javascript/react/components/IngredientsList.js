@@ -59,8 +59,10 @@ const IngredientsList = (props) => {
         <ul className="hop-list">
           <h4>Add at the start of the boiling process:</h4>
           {hopStartList}
+          <hr />
           <h4>Add 15 minutes into the boiling process:</h4>
           {hopMiddleList}
+          <hr />
           <h4>Add with 5 minutes left in the boiling process:</h4>
           {hopEndList}
         </ul>
