@@ -11,6 +11,11 @@ class PunkBeers < ActiveRecord::Migration[5.2]
       t.string :beer_volume_unit, null: false
       t.float :boil_volume_value, null: false
       t.string :boil_volume_unit, null: false
+      t.float :mash_temp_value
+      t.string :mash_temp_unit
+      t.float :mash_temp_duration
+      t.float :fermentation_value
+      t.string :fermentation_unit
 
       t.timestamps null: false
     end

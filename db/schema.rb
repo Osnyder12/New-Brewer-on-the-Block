@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_184140) do
+ActiveRecord::Schema.define(version: 2021_05_11_201740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,36 +71,31 @@ ActiveRecord::Schema.define(version: 2021_05_07_184140) do
     t.string "beer_volume_unit", null: false
     t.float "boil_volume_value", null: false
     t.string "boil_volume_unit", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "punk_hop_ingredients", force: :cascade do |t|
-    t.string "ingredient_type"
-    t.string "hop_ingredients", default: [], array: true
-    t.bigint "punk_beer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["punk_beer_id"], name: "index_punk_hop_ingredients_on_punk_beer_id"
-  end
-
-  create_table "punk_malt_ingredients", force: :cascade do |t|
-    t.string "ingredient_type"
-    t.string "malt_ingredients", default: [], array: true
-    t.bigint "punk_beer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["punk_beer_id"], name: "index_punk_malt_ingredients_on_punk_beer_id"
-  end
-
-  create_table "punk_mashes", force: :cascade do |t|
     t.float "mash_temp_value"
     t.string "mash_temp_unit"
     t.float "mash_temp_duration"
     t.float "fermentation_value"
     t.string "fermentation_unit"
-    t.bigint "punk_beer_id"
-    t.index ["punk_beer_id"], name: "index_punk_mashes_on_punk_beer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "punk_ingredients", force: :cascade do |t|
+    t.string "ingredient_type", null: false
+    t.string "name", null: false
+    t.float "amount_value", null: false
+    t.string "amount_unit", null: false
+    t.string "add_time"
+    t.bigint "punk_beer_id", null: false
+    t.index ["punk_beer_id"], name: "index_punk_ingredients_on_punk_beer_id"
+  end
+
+  create_table "punk_reviews", force: :cascade do |t|
+    t.integer "rating", null: false
+    t.integer "difficulty", null: false
+    t.string "comment"
+    t.bigint "punk_beer_id", null: false
+    t.index ["punk_beer_id"], name: "index_punk_reviews_on_punk_beer_id"
   end
 
   create_table "punk_yeast_ingredients", force: :cascade do |t|
