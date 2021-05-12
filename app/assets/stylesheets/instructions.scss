@@ -1,0 +1,31 @@
+$primary: #03244d;
+$secondary: #dd550c;
+$tertiary: #496e9c;
+$quaternary: #f68026;
+
+div.instructions-tile {
+  margin: 25px auto 25px auto;
+}
+
+.instructions-tile {
+  border: 2px solid $primary;
+  border-radius: 5%;
+  background-color: $secondary;
+  width: 90%;
+  height: 400px;
+  margin: auto 0;
+}
+
+.instructions h3 {
+  color: #03244d;
+  font-family: "Bebas Neue", cursive;
+  text-align: center;
+}
+
+.instructions li {
+  padding-left: 10px;
+}
+
+.instructions-tile {
+  margin-top: 100px;
+}

@@ -93,22 +93,18 @@ const PunkBeerShow = (props) => {
 
   return (
     <div>
-      <h1>{beer.name}</h1>
-      <div className="column-7">
-        <img className="show-page-image" src={beer.image_url}></img>
+      <h1 className="beer-title">{beer.name}</h1>
+      <div className="about-section">
+        <div className="column-7">
+          <img className="show-page-image" src={beer.image_url}></img>
+        </div>
+        <div className="about-beer column-7">
+          <p>
+            About this Beer: {beer.description}. ABV: {beer.abv}%, IBU: {beer.ibu}.
+          </p>
+        </div>
       </div>
-      <div className="column-7">
-        <p>About this Beer: {beer.description}</p>
-      </div>
-      <div className="beer-information">
-        <h2>Beer Stats and Brewing Instructions</h2>
-        <ul>
-          <li>abv: {beer.abv}</li>
-          <li>ibu: {beer.ibu}</li>
-          <li>ph: {beer.ph}</li>
-        </ul>
-      </div>
-      <div>
+      <div className="ingredients-list">
         <IngredientsList
           key={beer.id}
           id={beer.id}
@@ -118,7 +114,7 @@ const PunkBeerShow = (props) => {
           yeast={yeast}
         />
       </div>
-      <div>
+      <div className="instructions-tile">
         <InstructionsTile
           key={beer.id}
           id={beer.id}

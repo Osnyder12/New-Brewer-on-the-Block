@@ -48,20 +48,29 @@ const IngredientsList = (props) => {
   });
 
   return (
-    <div className="ingredients-list">
-      <h3>Malts:</h3>
-      <ul>{maltList}</ul>
-      <h3>Hops:</h3>
-      <ul className="hop-list">
-        <h4>Add at the start of the boiling process:</h4>
-        {hopStartList}
-        <h4>Add 15 minutes into the boiling process:</h4>
-        {hopMiddleList}
-        <h4>Add with 5 minutes left in the boiling process:</h4>
-        {hopEndList}
-      </ul>
-      <h3>Yeast:</h3>
-      {yeastList}
+    <div>
+      <h3 className="ingredients-title">Ingredients</h3>
+      <div className="column-8">
+        <h3>Malts:</h3>
+        <ul>{maltList}</ul>
+      </div>
+      <div className="column-8">
+        <h3>Hops:</h3>
+        <ul className="hop-list">
+          <h4>Add at the start of the boiling process:</h4>
+          {hopStartList}
+          <hr />
+          <h4>Add 15 minutes into the boiling process:</h4>
+          {hopMiddleList}
+          <hr />
+          <h4>Add with 5 minutes left in the boiling process:</h4>
+          {hopEndList}
+        </ul>
+      </div>
+      <div className="column-8">
+        <h3>Yeast:</h3>
+        {yeastList}
+      </div>
     </div>
   );
 };
