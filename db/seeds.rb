@@ -10,22 +10,17 @@ user1.save
 admin1 = User.new(email: "beerAdmin@gmail.com", password: "password", password_confirmation: "password", role: "admin")
 admin1.save
 
-beer1 = Beer.new(name: "SMaSH American IPA", description: "For this SMaSH (Single Malt and Single Hop) beer, I chose Mosaic hops, the daughter of American IPA hop stalwart Simcoe. Mosaic hops only became commercially available following the fall 2012 harvest, but they're already picking up steam among home and craft brewers for creating an array of flavors and aromas that have been said to include cedar, stone fruit, tropical fruit, blueberry, and floral notes. To round things out, I paired the Mosaic hops with the sweet, clean Golden Promise pale malt. Think of it as a Scottish equivalent to Maris Otter pale malt.", abv: 6.7, image_url: "https://www.seriouseats.com/thmb/jKeM58rr2uwn_fEKKU4lyiTuGbw=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2013__01__20130130-238963-SMaSH-homebrew-2d65e2d25c7146a9ae9fec066937df85.jpg", ibu: 66, ph: 4.4, beer_volume_value: 20, beer_volume_unit: "litres", boil_volume_value: 25, boil_volume_unit: "litres", user: user1)
+beer1 = Beer.new(name: "SMaSH American IPA", description: "For this SMaSH (Single Malt and Single Hop) beer, I chose Mosaic hops, the daughter of American IPA hop stalwart Simcoe. Mosaic hops only became commercially available following the fall 2012 harvest, but they're already picking up steam among home and craft brewers for creating an array of flavors and aromas that have been said to include cedar, stone fruit, tropical fruit, blueberry, and floral notes. To round things out, I paired the Mosaic hops with the sweet, clean Golden Promise pale malt. Think of it as a Scottish equivalent to Maris Otter pale malt.", abv: 6.7, image_url: "https://www.seriouseats.com/thmb/jKeM58rr2uwn_fEKKU4lyiTuGbw=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2013__01__20130130-238963-SMaSH-homebrew-2d65e2d25c7146a9ae9fec066937df85.jpg", ibu: 66, ph: 4.4, beer_volume_value: 20, beer_volume_unit: "litres", boil_volume_value: 25, boil_volume_unit: "litres", mash_temp_value: 64, mash_temp_unit: "celsius", mash_temp_duration: 75, fermentation_value: 19, fermentation_unit: "celsius", user: user1)
 beer1.save
 
-mash_one = Mash.new(mash_temp_value: 64, mash_temp_unit: "celsius", mash_temp_duration: 75, fermentation_value: 19, fermentation_unit: "celsius", beer: beer1)
-mash_one.save
-
-hop_ingredients1_array = [
-  {"name"=>"Mosaic hops", "amount"=>{"value"=>0.02, "unit"=>"kilograms"}, "add"=>"start"},
-  {"name"=>"Mosaic hops", "amount"=>{"value"=>0.04, "unit"=>"kilograms"}, "add"=>"middle"},
-  {"name"=>"Mosaic hops", "amount"=>{"value"=>0.05, "unit"=>"kilograms"}, "add"=>"end"}
-]
-
-hop_ingredients1 = HopIngredient.new(ingredient_type: "hop", hop_ingredients: hop_ingredients1_array, beer: beer1)
+hop_ingredients1 = Ingredient.new(ingredient_type: "hop", name: "Mosaic hops", amount_value: 0.02, amount_unit: "kilograms", add_time: "start", beer: beer1)
+hop_ingredients1.save
+hop_ingredients1 = Ingredient.new(ingredient_type: "hop", name: "Mosaic hops", amount_value: 0.04, amount_unit: "kilograms", add_time: "middle", beer: beer1)
+hop_ingredients1.save
+hop_ingredients1 = Ingredient.new(ingredient_type: "hop", name: "Mosaic hops", amount_value: 0.05, amount_unit: "kilograms", add_time: "end", beer: beer1)
 hop_ingredients1.save
 
-malt_ingredients1 =  MaltIngredient.new(ingredient_type: "malt", malt_ingredients: [{"name"=>"Maris Otter Extra Pale", "amount"=>{"value"=>5.44, "unit"=>"kilograms"}}], beer: beer1)
+malt_ingredients1 = Ingredient.new(ingredient_type: "malt", name: "Maris Otter Extra Pale", amount_value: 5.44, amount_unit: "kilograms", beer: beer1)
 malt_ingredients1.save
 
 yeast_ingredient1 = YeastIngredient.new(ingredient_type: "yeast", name: "Wyeast 1056 American Ale Yeast", beer: beer1)

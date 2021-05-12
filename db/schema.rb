@@ -26,38 +26,27 @@ ActiveRecord::Schema.define(version: 2021_05_12_164747) do
     t.string "beer_volume_unit", null: false
     t.float "boil_volume_value", null: false
     t.string "boil_volume_unit", null: false
+    t.float "mash_temp_value"
+    t.string "mash_temp_unit"
+    t.float "mash_temp_duration"
+    t.float "fermentation_value"
+    t.string "fermentation_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_beers_on_user_id"
   end
 
-  create_table "hop_ingredients", force: :cascade do |t|
-    t.string "ingredient_type"
-    t.string "hop_ingredients", default: [], array: true
-    t.bigint "beer_id"
+  create_table "ingredients", force: :cascade do |t|
+    t.string "ingredient_type", null: false
+    t.string "name", null: false
+    t.float "amount_value", null: false
+    t.string "amount_unit", null: false
+    t.string "add_time"
+    t.bigint "beer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["beer_id"], name: "index_hop_ingredients_on_beer_id"
-  end
-
-  create_table "malt_ingredients", force: :cascade do |t|
-    t.string "ingredient_type"
-    t.string "malt_ingredients", default: [], array: true
-    t.bigint "beer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["beer_id"], name: "index_malt_ingredients_on_beer_id"
-  end
-
-  create_table "mashes", force: :cascade do |t|
-    t.float "mash_temp_value"
-    t.string "mash_temp_unit"
-    t.float "mash_temp_duration"
-    t.float "fermentation_value"
-    t.string "fermentation_unit"
-    t.bigint "beer_id"
-    t.index ["beer_id"], name: "index_mashes_on_beer_id"
+    t.index ["beer_id"], name: "index_ingredients_on_beer_id"
   end
 
   create_table "punk_beers", force: :cascade do |t|
