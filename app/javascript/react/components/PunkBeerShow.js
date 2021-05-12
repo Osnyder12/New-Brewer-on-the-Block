@@ -109,10 +109,24 @@ const PunkBeerShow = (props) => {
         </ul>
       </div>
       <div>
-        <IngredientsList key={beer.id} beer={beer} malts={malts} hops={hops} yeast={yeast} />
+        <IngredientsList
+          key={beer.id}
+          id={beer.id}
+          beer={beer}
+          malts={malts}
+          hops={hops}
+          yeast={yeast}
+        />
       </div>
       <div>
-        <InstructionsTile key={beer.id} beer={beer} malts={malts} hops={hops} yeast={yeast} />
+        <InstructionsTile
+          key={beer.id}
+          id={beer.id}
+          beer={beer}
+          malts={malts}
+          hops={hops}
+          yeast={yeast}
+        />
       </div>
       <div>
         <ReviewFormContainer
