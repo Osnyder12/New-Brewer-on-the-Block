@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import BeerTile from "./BeerTile";
+import PunkBeerShow from "./PunkBeerShow";
+import PunkBeerTile from "./PunkBeerTile";
 
 const PunkBeerIndex = (props) => {
   const [beers, setBeers] = useState([]);
-  const [malts, setMalts] = useState([]);
-  const [hops, sethops] = useState([]);
-  const [yeast, setYeast] = useState([]);
 
   const fetchBeers = async () => {
     try {
@@ -16,7 +14,8 @@ const PunkBeerIndex = (props) => {
         throw error;
       }
       const beerResponseBody = await response.json();
-      setBeers(beerResponseBody.punk_beer);
+      debugger;
+      setBeers(beerResponseBody);
     } catch (err) {
       console.error("Error in fetch!");
       console.error(err);
@@ -29,7 +28,7 @@ const PunkBeerIndex = (props) => {
 
   const beerList = beers.map((beer) => {
     return (
-      <BeerTile
+      <PunkBeerTile
         key={beer.id}
         id={beer.id}
         name={beer.name}
