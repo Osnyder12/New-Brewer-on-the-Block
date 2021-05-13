@@ -10,7 +10,7 @@ class Api::V1::PunkBeersController < ApplicationController
     beer = PunkBeer.find(params[:id])
     malts = beer.punk_ingredients.where(ingredient_type: "malt")
     hops = beer.punk_ingredients.where(ingredient_type: "hop")
-    yeast = beer.punk_yeast_ingredients
+    yeast = beer.punk_ingredients(ingredient_type: "yeast")
 
     reviews = beer.punk_reviews
 

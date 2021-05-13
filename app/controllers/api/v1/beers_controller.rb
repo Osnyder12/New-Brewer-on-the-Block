@@ -8,7 +8,7 @@ class Api::V1::BeersController < ApplicationController
     beer = Beer.find(params[:id])
     malts = beer.ingredients.where(ingredient_type: "malt")
     hops = beer.ingredients.where(ingredient_type: "hop")
-    yeast = beer.yeast_ingredients
+    yeast = beer.ingredients.where(ingredient_type: "yeast")
 
     reviews = beer.reviews
     render json: {
