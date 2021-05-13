@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2021_05_12_164747) do
   create_table "ingredients", force: :cascade do |t|
     t.string "ingredient_type", null: false
     t.string "name", null: false
-    t.float "amount_value", null: false
-    t.string "amount_unit", null: false
+    t.float "amount_value"
+    t.string "amount_unit"
     t.string "add_time"
     t.bigint "beer_id", null: false
     t.datetime "created_at", null: false
@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(version: 2021_05_12_164747) do
   create_table "punk_ingredients", force: :cascade do |t|
     t.string "ingredient_type", null: false
     t.string "name", null: false
-    t.float "amount_value", null: false
-    t.string "amount_unit", null: false
+    t.float "amount_value"
+    t.string "amount_unit"
     t.string "add_time"
     t.bigint "punk_beer_id", null: false
     t.index ["punk_beer_id"], name: "index_punk_ingredients_on_punk_beer_id"
@@ -87,15 +87,6 @@ ActiveRecord::Schema.define(version: 2021_05_12_164747) do
     t.bigint "user_id", null: false
     t.index ["punk_beer_id"], name: "index_punk_reviews_on_punk_beer_id"
     t.index ["user_id"], name: "index_punk_reviews_on_user_id"
-  end
-
-  create_table "punk_yeast_ingredients", force: :cascade do |t|
-    t.string "ingredient_type"
-    t.string "name"
-    t.bigint "punk_beer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["punk_beer_id"], name: "index_punk_yeast_ingredients_on_punk_beer_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -120,15 +111,6 @@ ActiveRecord::Schema.define(version: 2021_05_12_164747) do
     t.string "role", default: "member", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "yeast_ingredients", force: :cascade do |t|
-    t.string "ingredient_type"
-    t.string "name"
-    t.bigint "beer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["beer_id"], name: "index_yeast_ingredients_on_beer_id"
   end
 
 end

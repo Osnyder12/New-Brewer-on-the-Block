@@ -23,7 +23,7 @@ hop_ingredients1.save
 malt_ingredients1 = Ingredient.new(ingredient_type: "malt", name: "Maris Otter Extra Pale", amount_value: 5.44, amount_unit: "kilograms", beer: beer1)
 malt_ingredients1.save
 
-yeast_ingredient1 = YeastIngredient.new(ingredient_type: "yeast", name: "Wyeast 1056 American Ale Yeast", beer: beer1)
+yeast_ingredient1 = Ingredient.new(ingredient_type: "yeast", name: "Wyeast 1056 American Ale Yeast", beer: beer1)
 yeast_ingredient1.save
 
 ### Punk Beers
@@ -31,7 +31,7 @@ yeast_ingredient1.save
 parsed_response.each do |beer|
   # consider adding all mash values to the beer table to combine them into one
   saved_beer = PunkBeer.create(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"], mash_temp_value: beer["method"]["mash_temp"][0]["temp"]["value"], mash_temp_unit: beer["method"]["mash_temp"][0]["temp"]["unit"], mash_temp_duration: beer["method"]["mash_temp"][0]["duration"], fermentation_value: beer["method"]["fermentation"]["temp"]["value"], fermentation_unit: beer["method"]["fermentation"]["temp"]["unit"])
-  PunkYeastIngredient.create(ingredient_type: "yeast", name: beer["ingredients"]["yeast"], punk_beer: saved_beer)
+  PunkIngredient.create(ingredient_type: "yeast", name: beer["ingredients"]["yeast"], punk_beer: saved_beer)
 end
 
 parsed_response.each do |beer|
