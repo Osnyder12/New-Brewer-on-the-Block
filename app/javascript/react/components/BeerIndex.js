@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import BeerTile from "./BeerTile";
+import BeerFormContainer from "./BeerFormContainer";
 
 const BeerIndex = (props) => {
   const [beers, setBeers] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
 
   const fetchBeers = async () => {
     try {
@@ -13,7 +15,8 @@ const BeerIndex = (props) => {
         throw error;
       }
       const beerResponseBody = await response.json();
-      setBeers(beerResponseBody);
+      setBeers(beerResponseBody.beer);
+      setCurrentUser(beerResponseBody.currentUser);
     } catch (err) {
       console.error("Error in fetch!");
       console.error(err);
@@ -23,6 +26,32 @@ const BeerIndex = (props) => {
   useEffect(() => {
     fetchBeers();
   }, []);
+
+  const addNewBeer = async (formPayload) => {
+    try {
+      const newBeerResponse = await fetch("/api/v1/beers/new", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formPayload),
+      });
+      if (newBeerResponse.ok) {
+        const parsedBeerResponse = await newBeerResponse.json();
+        setbeers([...beers, parsedBeerResponse]);
+      }
+      if (newBeerResponse.status === 401 || newBeerResponse.status === 422) {
+        const errorMessage = await newBeerResponse.json();
+        setErrors({ error: errorMessage.error });
+      }
+      const error = new Error(`${newBeerResponse.status}: ${newBeerResponse.statusText}`);
+      throw error;
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+    }
+  };
 
   const beerList = beers.map((beer) => {
     return (
@@ -47,6 +76,7 @@ const BeerIndex = (props) => {
     <div>
       <h1 className="index-title">Select a Homebrewing Recipe!</h1>
       <ul>{beerList}</ul>
+      <BeerFormContainer addNewBeer={addNewBeer} />
     </div>
   );
 };

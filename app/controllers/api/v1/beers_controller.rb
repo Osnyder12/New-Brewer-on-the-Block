@@ -1,7 +1,11 @@
 class Api::V1::BeersController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
   def index
-    render json: Beer.all
+    beer = Beer.all
+    render json: {
+      beer: beer,
+      current_user: current_user,
+  }
   end
 
   def show
@@ -19,5 +23,25 @@ class Api::V1::BeersController < ApplicationController
       reviews: reviews,
       current_user: current_user,
     }
+  end
+
+  def new
+  end
+
+  def create
+    beer = Beer.new(beer_params)
+    beer.user = current_user
+
+    if beer.save
+      render json: beer
+    else
+      render json: { error: beer.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def beer_params
+    params.require(:beer).permit(:name, :description, :abv, :image_url, :ibu, :ph, :beer_volume_value, :beer_volume_unit, :boil_volume_value, :boil_volume_unit, :mash_temp_value, :mash_temp_unit, :mash_temp_duration, :fermentation_value, :fermentation_unit)
   end
 end
