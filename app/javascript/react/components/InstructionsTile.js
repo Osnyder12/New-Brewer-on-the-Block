@@ -53,7 +53,7 @@ const InstructionsTile = (props) => {
     <div className="instructions">
       <h3>Brewing Instructions</h3>
       <li>
-        In a 7 gallon pot, add {props.beer.boil_volume_value} {props.beer.boil_volume_unit} of
+        In a 10 gallon pot, add {props.beer.boil_volume_value} {props.beer.boil_volume_unit} of
         water.
       </li>
       <li>
@@ -66,7 +66,7 @@ const InstructionsTile = (props) => {
         water flow through the mash.{hopMiddleString}
       </li>
       <li>
-        Let the wort drain from the strainer into your 7 gallon pot{hopEndString}and allow wort to
+        Let the wort drain from the strainer into your 10 gallon pot{hopEndString}and allow wort to
         cool down to {props.beer.fermentation_value} degrees {props.beer.fermentation_unit}.
       </li>
       <li>
