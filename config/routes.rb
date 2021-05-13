@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/beers', to: 'homes#index'
   get '/beers/:id', to: 'homes#index'
-  get '/api/v1/beers/new', to: 'homes#index'
+  get '/beers/new', to: 'homes#index'
   get '/punk_beers', to: 'homes#index'
   get '/punk_beers/:id', to: 'homes#index'
 

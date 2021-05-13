@@ -29,7 +29,7 @@ const BeerIndex = (props) => {
 
   const addNewBeer = async (formPayload) => {
     try {
-      const newBeerResponse = await fetch("/api/v1/beers/new", {
+      const newBeerResponse = await fetch("/api/v1/beers", {
         method: "POST",
         credentials: "same-origin",
         headers: {

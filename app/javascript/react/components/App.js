@@ -11,8 +11,8 @@ export const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/beers" component={BeerIndex} />
+        <Route exact path="/beers/new" component={BeerFormContainer} />
         <Route exact path="/beers/:id" component={BeerShow} />
-        <Route exact path="/api/v1/beers/new" component={BeerFormContainer} />
         <Route exact path="/punk_beers" component={PunkBeerIndex} />
         <Route exact path="/punk_beers/:id" component={PunkBeerShow} />
       </Switch>

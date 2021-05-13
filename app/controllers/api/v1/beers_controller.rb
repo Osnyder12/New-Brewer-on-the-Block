@@ -25,9 +25,6 @@ class Api::V1::BeersController < ApplicationController
     }
   end
 
-  def new
-  end
-
   def create
     beer = Beer.new(beer_params)
     beer.user = current_user
