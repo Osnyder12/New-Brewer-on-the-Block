@@ -93,7 +93,7 @@ const ReviewFormContainer = (props) => {
               onChange={handleFieldChange}
             />
           </div>
-          <div classname="form-buttons">
+          <div className="form-buttons">
             <div>
               <input type="submit" value="Submit New Review" />
             </div>
