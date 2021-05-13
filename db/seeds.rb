@@ -43,7 +43,7 @@ malt_ingredients2.save
 malt_ingredients3 = Ingredient.new(ingredient_type: "malt", name: "Munich Malt", amount_value: 0.8, amount_unit: "kilograms", beer: beer2)
 malt_ingredients3.save
 
-yeast_ingredient2 = YeastIngredient.new(ingredient_type: "yeast", name: "Wyeast 1056 American Ale Yeast", beer: beer2)
+yeast_ingredient2 = Ingredient.new(ingredient_type: "yeast", name: "Wyeast 1056 American Ale Yeast", beer: beer2)
 yeast_ingredient2.save
 
 ## Beer 3
@@ -63,7 +63,7 @@ malt_ingredients4.save
 malt_ingredients5 = Ingredient.new(ingredient_type: "malt", name: "Pale dry malt extract", amount_value: 0.23, amount_unit: "kilograms", beer: beer3)
 malt_ingredients5.save
 
-yeast_ingredient3 = YeastIngredient.new(ingredient_type: "yeast", name: "Wyeast 1056 American Ale Yeast", beer: beer3)
+yeast_ingredient3 = Ingredient.new(ingredient_type: "yeast", name: "Wyeast 1056 American Ale Yeast", beer: beer3)
 yeast_ingredient3.save
 
 ## Beer 4
@@ -83,7 +83,7 @@ malt_ingredients8.save
 malt_ingredients9 = Ingredient.new(ingredient_type: "malt", name: "Chocolate malt", amount_value: 0.46, amount_unit: "kilograms", beer: beer4)
 malt_ingredients9.save
 
-yeast_ingredient4 = YeastIngredient.new(ingredient_type: "yeast", name: "Wyeast 1084 Irish ale yeast", beer: beer4)
+yeast_ingredient4 = Ingredient.new(ingredient_type: "yeast", name: "Wyeast 1084 Irish ale yeast", beer: beer4)
 yeast_ingredient4.save
 
 ### Punk Beers
