@@ -59,7 +59,7 @@ const ReviewFormContainer = (props) => {
         <form className="review-form" onSubmit={handleFormSubmit}>
           <ErrorList errors={props.errors} />
           <h2>Add A Review</h2>
-          <div>
+          <div className="field">
             <label>Rating</label>
             <input
               name="rating"
@@ -71,7 +71,7 @@ const ReviewFormContainer = (props) => {
               onChange={handleFieldChange}
             />
           </div>
-          <div>
+          <div className="field">
             <label>Difficulty</label>
             <input
               name="difficulty"
@@ -83,7 +83,7 @@ const ReviewFormContainer = (props) => {
               onChange={handleFieldChange}
             />
           </div>
-          <div>
+          <div className="field">
             <label>Comment</label>
             <input
               name="comment"
@@ -105,7 +105,7 @@ const ReviewFormContainer = (props) => {
       </div>
     );
   } else {
-    reviewForm = <h3>Please Sign Up or Sign In to add a review!</h3>;
+    reviewForm = <h3 className="review-sign">Please Sign Up or Sign In to add a review!</h3>;
   }
 
   return <div>{reviewForm}</div>;

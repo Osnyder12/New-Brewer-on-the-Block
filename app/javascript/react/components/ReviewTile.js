@@ -17,6 +17,7 @@ const ReviewTile = (props) => {
       <span>Difficulty:</span>
       <p>{props.review.difficulty}</p>
       <p>{props.review.comment}</p>
+      <p className="reviewer-email">Submitted By: {props.currentUser.email}</p>
       {deleteButton}
     </li>
   );

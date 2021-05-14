@@ -1,0 +1,28 @@
+$primary: #03244d;
+$secondary: #dd550c;
+$tertiary: #496e9c;
+$quaternary: #f68026;
+$white: white;
+
+.reviews {
+  width: 90%;
+  height: fit-content;
+  margin: 10px auto;
+  border: 2px solid $secondary;
+  background-color: $white;
+  border-radius: 5%;
+  margin-bottom: 20px;
+  list-style-type: none;
+}
+
+.reviews li {
+  width: 90%;
+  margin: 15px auto;
+  font-family: "Bebas Neue", cursive;
+  color: $primary;
+  font-size: 20px;
+}
+
+.reviewer-email {
+  font-size: 14px;
+}

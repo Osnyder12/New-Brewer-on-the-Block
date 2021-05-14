@@ -19,7 +19,7 @@ const ReviewsContainer = (props) => {
     });
     return <ul className="reviews">{reviewArray}</ul>;
   } else {
-    return <p>No Reviews Yet!</p>;
+    return <p className="no-reviews">No Reviews Yet!</p>;
   }
 };
 

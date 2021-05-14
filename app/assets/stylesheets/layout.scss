@@ -18,3 +18,23 @@ h1.index-title {
   max-width: 50%;
   margin: 0 auto;
 }
+
+form {
+  width: 50%;
+  height: 400px;
+  margin: auto;
+  border: 3px solid black;
+  background-color: white;
+  border-radius: 5%;
+}
+
+form div.field {
+  width: 50%;
+  margin: auto;
+}
+
+.content h2 {
+  font-family: "Bebas Neue", cursive;
+  text-align: center;
+  color: $primary;
+}

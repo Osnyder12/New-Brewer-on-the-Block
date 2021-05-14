@@ -2,6 +2,7 @@ $primary: #03244d;
 $secondary: #dd550c;
 $tertiary: #496e9c;
 $quaternary: #f68026;
+$white: white;
 
 h1.beer-title {
   color: $secondary;
@@ -9,9 +10,16 @@ h1.beer-title {
   text-align: center;
 }
 
+div.content .grid-container {
+  background-color: $primary;
+  border: 1px solid $secondary;
+}
+
 .show-page-image {
-  width: 25%;
-  height: auto;
+  margin-left: 470px;
+  margin-bottom: 20px;
+  width: 20%;
+  height: 80%;
 }
 
 .about-beer {
@@ -22,9 +30,13 @@ form.review-form {
   width: 90%;
   height: 400px;
   margin: auto;
-  border: 3px solid black;
-  background-color: $secondary;
+  border: 3px solid $secondary;
+  background-color: $white;
   border-radius: 5%;
+}
+
+form.review-form div.field {
+  width: 50%;
 }
 
 form.review-form h2 {
@@ -61,6 +73,35 @@ input[type="button"] {
   font-family: "Bebas Neue", cursive;
   color: #03244d;
 }
-div.column-7 img {
-  align-items: center;
+
+.review-sign {
+  text-align: center;
+  font-family: "Bebas Neue", cursive;
+  color: #03244d;
+}
+
+.no-reviews {
+  text-align: center;
+  font-family: "Bebas Neue", cursive;
+  color: #03244d;
+}
+
+.about-beer {
+  width: 90%;
+  height: fit-content;
+  margin: auto;
+  border: 2px solid $primary;
+  background-color: $white;
+  border-radius: 5%;
+  margin-bottom: 20px;
+}
+.about-beer h3 {
+  text-align: center;
+  font-family: "Bebas Neue", cursive;
+  color: #03244d;
+}
+
+.about-beer p {
+  width: 80%;
+  margin: auto;
 }
