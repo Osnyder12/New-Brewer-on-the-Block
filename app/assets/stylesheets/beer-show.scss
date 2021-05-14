@@ -10,6 +10,11 @@ h1.beer-title {
   text-align: center;
 }
 
+div.content .grid-container {
+  background-color: $primary;
+  border: 1px solid $secondary;
+}
+
 .show-page-image {
   margin-left: 470px;
   margin-bottom: 20px;
@@ -25,7 +30,7 @@ form.review-form {
   width: 90%;
   height: 400px;
   margin: auto;
-  border: 3px solid black;
+  border: 3px solid $secondary;
   background-color: $white;
   border-radius: 5%;
 }
