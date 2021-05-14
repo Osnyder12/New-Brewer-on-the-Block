@@ -2,7 +2,7 @@ class Api::V1::BeersController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
   def index
     beer = Beer.all
-    render json: {
+    render json: { 
       beer: beer,
       current_user: current_user,
   }

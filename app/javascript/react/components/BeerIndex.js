@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BeerTile from "./BeerTile";
-import BeerFormContainer from "./BeerFormContainer";
+import { Link } from "react-router-dom";
 
 const BeerIndex = (props) => {
   const [beers, setBeers] = useState([]);
@@ -16,7 +16,7 @@ const BeerIndex = (props) => {
       }
       const beerResponseBody = await response.json();
       setBeers(beerResponseBody.beer);
-      setCurrentUser(beerResponseBody.currentUser);
+      setCurrentUser(beerResponseBody.current_user);
     } catch (err) {
       console.error("Error in fetch!");
       console.error(err);
@@ -26,32 +26,6 @@ const BeerIndex = (props) => {
   useEffect(() => {
     fetchBeers();
   }, []);
-
-  const addNewBeer = async (formPayload) => {
-    try {
-      const newBeerResponse = await fetch("/api/v1/beers", {
-        method: "POST",
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(formPayload),
-      });
-      if (newBeerResponse.ok) {
-        const parsedBeerResponse = await newBeerResponse.json();
-        setbeers([...beers, parsedBeerResponse]);
-      }
-      if (newBeerResponse.status === 401 || newBeerResponse.status === 422) {
-        const errorMessage = await newBeerResponse.json();
-        setErrors({ error: errorMessage.error });
-      }
-      const error = new Error(`${newBeerResponse.status}: ${newBeerResponse.statusText}`);
-      throw error;
-    } catch (error) {
-      console.error(`Error in fetch: ${error.message}`);
-    }
-  };
 
   const beerList = beers.map((beer) => {
     return (
@@ -72,11 +46,16 @@ const BeerIndex = (props) => {
     );
   });
 
+  // let newRecipeLink = null;
+  // if (currentUser.role === "admin") {
+  //   newRecipeLink = <Link to="/beers/new">Add a new starter recipe</Link>;
+  // }
+
   return (
     <div>
       <h1 className="index-title">Select a Homebrewing Recipe!</h1>
       <ul>{beerList}</ul>
-      <BeerFormContainer addNewBeer={addNewBeer} />
+      <Link to="/beers/new">Add a new starter recipe</Link>;
     </div>
   );
 };

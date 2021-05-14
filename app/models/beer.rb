@@ -3,5 +3,4 @@ class Beer < ApplicationRecord
   belongs_to :user
   has_many :reviews
   has_many :ingredients
-  has_many :yeast_ingredients
 end

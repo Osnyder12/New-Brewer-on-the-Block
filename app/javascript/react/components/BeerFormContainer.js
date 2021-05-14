@@ -22,6 +22,31 @@ const BeerFormContainer = (props) => {
     fermentation_unit: "",
   });
 
+  const addNewBeer = async (formPayload) => {
+    try {
+      const newBeerResponse = await fetch("/api/v1/beers", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formPayload),
+      });
+      if (newBeerResponse.ok) {
+        const parsedBeerResponse = await newBeerResponse.json();
+      }
+      if (newBeerResponse.status === 401 || newBeerResponse.status === 422) {
+        const errorMessage = await newBeerResponse.json();
+        setErrors({ error: errorMessage.error });
+      }
+      const error = new Error(`${newBeerResponse.status}: ${newBeerResponse.statusText}`);
+      throw error;
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+    }
+  };
+
   const handleFieldChange = (event) => {
     setFormFields({
       ...formFields,
@@ -31,7 +56,7 @@ const BeerFormContainer = (props) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    props.addNewBeer(formFields);
+    addNewBeer(formFields);
     setFormFields({
       name: "",
       description: "",
