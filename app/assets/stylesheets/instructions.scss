@@ -2,6 +2,7 @@ $primary: #03244d;
 $secondary: #dd550c;
 $tertiary: #496e9c;
 $quaternary: #f68026;
+$white: white;
 
 div.instructions-tile {
   margin: 25px auto 25px auto;
@@ -10,10 +11,11 @@ div.instructions-tile {
 .instructions-tile {
   border: 2px solid $primary;
   border-radius: 5%;
-  background-color: $secondary;
+  background-color: $white;
   width: 90%;
-  height: 400px;
+  height: fit-content;
   margin: auto 0;
+  padding: 10px;
 }
 
 .instructions h3 {
