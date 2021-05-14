@@ -17,7 +17,7 @@ Rails.application.routes.draw do
         resources :punk_reviews, only: [:index, :create, :destroy]
       end
       resources :beers, only: [:index] do
-        resources :ingredients, only: [:create, :new]
+        resources :ingredients, only: [:index, :create, :new]
       end
     end
   end

@@ -5,6 +5,7 @@ import PunkBeerIndex from "./PunkBeerIndex";
 import BeerShow from "./BeerShow";
 import PunkBeerShow from "./PunkBeerShow";
 import BeerFormContainer from "./BeerFormContainer";
+import IngredientsFormContainer from "./IngredientsFormContainer";
 
 export const App = (props) => {
   return (

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import _ from "lodash";
+import IngredientsFormContainer from "./IngredientsFormContainer";
 import ErrorList from "./ErrorList";
 import { Redirect } from "react-router";
 
 const BeerFormContainer = (props) => {
+  const [errors, setErrors] = useState({});
   const [formFields, setFormFields] = useState({
     name: "",
     description: "",
