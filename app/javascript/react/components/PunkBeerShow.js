@@ -100,7 +100,7 @@ const PunkBeerShow = (props) => {
       <div className="about-beer column-7">
         <h3>About {beer.name}</h3>
         <p>
-          {beer.description}. ABV: {beer.abv}%, IBU: {beer.ibu}.
+          {beer.description} ABV: {beer.abv}%, IBU: {beer.ibu}.
         </p>
       </div>
       <div className="ingredients-list">
