@@ -15,7 +15,7 @@ class Api::V1::PunkBeersController < ApplicationController
     reviews = beer.punk_reviews
 
     render json: {
-      punk_beer: beer,
+      punk_beer: PunkBeerShowSerializer.new(beer),
       malts: malts,
       hops: hops,
       yeast: yeast,

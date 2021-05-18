@@ -12,7 +12,7 @@ class Api::V1::BeersController < ApplicationController
 
     reviews = beer.reviews
     render json: {
-      beer: beer,
+      beer: BeerShowSerializer.new(beer),
       malts: malts,
       hops: hops,
       yeast: yeast,
