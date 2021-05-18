@@ -12,10 +12,9 @@ const ReviewTile = (props) => {
 
   return (
     <li>
-      <span>Rating:</span>
-      <p>{props.review.rating}</p>
-      <span>Difficulty:</span>
-      <p>{props.review.difficulty}</p>
+      <span>Rating (1-5): {props.review.rating}</span>
+      <br />
+      <span>Difficulty (1-10): {props.review.difficulty}</span>
       <p>{props.review.comment}</p>
       {deleteButton}
     </li>
