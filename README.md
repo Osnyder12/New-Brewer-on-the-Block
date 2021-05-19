@@ -10,6 +10,8 @@ A site for those who are new to homebrewing where they can find basic recipes an
 
 New Brewer on the Block was created using a Ruby on Rails backend with PostgreSQL database, Active Record for data persistence, and React JavaScript frontend. User functionality and authentication was achieved using the Devise gem. The [Punk API](https://punkapi.com/documentation/v2) was used for all BrewDog recipe information and data.
 
+Visit [New Brewer on the Block](https://new-brewer.herokuapp.com/) on Heroku or set up locally with the directions below.
+
 ## Setup
 
 Clone the repository from GitHub:
