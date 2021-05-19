@@ -94,15 +94,14 @@ const BeerShow = (props) => {
   return (
     <div>
       <h1 className="beer-title">{beer.name}</h1>
-      <div className="about-section">
-        <div className="column-7">
-          <img className="show-page-image" src={beer.image_url}></img>
-        </div>
-        <div className="about-beer column-7">
-          <p>
-            About this Beer: {beer.description}. ABV: {beer.abv}%, IBU: {beer.ibu}.
-          </p>
-        </div>
+      <div className="column-7">
+        <img className="show-page-image" src={beer.image_url}></img>
+      </div>
+      <div className="about-beer column-7">
+        <h3>About {beer.name}</h3>
+        <p>
+          {beer.description} ABV: {beer.abv}%, IBU: {beer.ibu}.
+        </p>
       </div>
       <div className="ingredients-list">
         <IngredientsList
