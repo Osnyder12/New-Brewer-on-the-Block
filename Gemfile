@@ -56,3 +56,5 @@ gem 'webpacker', '~> 3.3'
 gem "faraday"
 gem "active_model_serializers"
 gem "carrierwave"
+gem 'simple_form'
+gem 'cocoon'

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'beers#index'
   devise_for :users
 
+  resources :beers, only: [ :new, :edit, :create, :update, :destroy ]
+
   get '/beers', to: 'homes#index'
   get '/beers/:id', to: 'homes#index'
   get '/punk_beers', to: 'homes#index'

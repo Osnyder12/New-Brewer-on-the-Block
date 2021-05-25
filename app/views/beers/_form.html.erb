@@ -1,0 +1,88 @@
+<%= simple_form_for(@beer) do |f| %>
+<div id="new" class="new-form">
+  <div>
+    <%= f.label :name %> <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :description %> <%= f.text_area :description, size: "70x3"%>
+  </div>
+
+  <div>
+    <%= f.label :abv %> <%= f.number_field :abv %>
+  </div>
+
+  <div>
+    <%= f.label :image_url %> <%= f.text_field :image_url %>
+  </div>
+
+  <div>
+    <%= f.label :ibu %> <%= f.number_field :ibu %>
+  </div>
+
+  <div>
+    <%= f.label :ph %> <%= f.number_field :ph %>
+  </div>
+
+  <div>
+    <%= f.label :beer_volume_value %> <%= f.number_field :beer_volume_value %>
+  </div>
+
+  <div>
+    <%= f.label :beer_volume_unit %> <%= f.text_field :beer_volume_unit %>
+  </div>
+
+  <div>
+    <%= f.label :boil_volume_value %> <%= f.number_field :boil_volume_value %>
+  </div>
+
+  <div>
+    <%= f.label :boil_volume_unit %> <%= f.text_field :boil_volume_unit %>
+  </div>
+
+  <div>
+    <%= f.label :mash_temp_value %> <%= f.number_field :mash_temp_value %>
+  </div>
+
+  <div>
+    <%= f.label :mash_temp_unit %> <%= f.text_field :mash_temp_unit %>
+  </div>
+
+  <div>
+    <%= f.label :mash_temp_duration %> <%= f.number_field :mash_temp_duration %>
+  </div>
+
+  <div>
+    <%= f.label :fermentation_value %> <%= f.number_field :fermentation_value %>
+  </div>
+
+  <div>
+    <%= f.label :fermentation_unit %> <%= f.text_field :fermentation_unit %>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Delete Ingredient</th>
+        <th>Ingredient Type</th>
+        <th>Ingredient Name</th>
+        <th>Amount Value</th>
+        <th>Amount Unit</th>
+        <th>Add Time (hops)</th>
+      </tr>
+    </thead>
+    <tbody class="ingredients">
+      <%= f.simple_fields_for :ingredients do |builder| %> <%= render 'ingredient_fields', f:
+      builder %> <% end %>
+    </tbody>
+  </table>
+  <div class="add-ingredient">
+    <%= link_to_add_association 'Add Ingredient', f, :ingredients, class: 'btn btn-primary', data:
+    {association_insertion_node: '.ingredients', association_insertion_method: :append }%>
+  </div>
+
+  <div class="submit">
+    <%= f.submit 'Add Beer' %>
+  </div>
+  <% end %>
+</div>
