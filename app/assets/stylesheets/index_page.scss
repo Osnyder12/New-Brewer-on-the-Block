@@ -1,0 +1,29 @@
+$primary: #03244d;
+$secondary: #dd550c;
+$tertiary: #496e9c;
+$quaternary: #f68026;
+
+.form-link {
+  height: fit-content;
+}
+
+.form-link p {
+  color: $secondary;
+  font-family: "Bebas Neue", cursive;
+  margin: auto;
+}
+
+.form-link .a-primary {
+  color: $secondary;
+  font-family: "Bebas Neue", cursive;
+  text-align: left;
+  text-decoration: underline;
+}
+
+.form-link ul {
+  background-color: $primary;
+  color: $secondary;
+  font-family: "Bebas Neue", cursive;
+  text-align: left;
+  margin: auto;
+}

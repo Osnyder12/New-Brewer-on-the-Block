@@ -1,0 +1,35 @@
+$primary: #03244d;
+$secondary: #dd550c;
+$tertiary: #496e9c;
+$quaternary: #f68026;
+
+.form-title {
+  text-align: center;
+  color: $secondary;
+  font-family: "Bebas Neue", cursive;
+}
+
+div#new.new-form {
+  background-color: gray;
+  border: 1px solid $secondary !important;
+}
+
+.simple_form.new_beer {
+  all: none;
+}
+
+.new_form div.text_field {
+  width: 80%;
+}
+
+.back-link .b-primary {
+  color: $secondary;
+  font-family: "Bebas Neue", cursive;
+  text-align: left;
+}
+
+div.add-ingredient .btn.btn-primary {
+  color: $primary;
+  font-family: "Bebas Neue", cursive;
+  font-size: medium;
+}

@@ -13,6 +13,7 @@ export const App = (props) => {
         <Route exact path="/beers/:id" component={BeerShow} />
         <Route exact path="/punk_beers" component={PunkBeerIndex} />
         <Route exact path="/punk_beers/:id" component={PunkBeerShow} />
+        <Route exact path="/beers/:id" component={BeerShow} />
       </Switch>
     </BrowserRouter>
   );
