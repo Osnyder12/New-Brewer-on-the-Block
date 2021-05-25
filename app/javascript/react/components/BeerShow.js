@@ -3,6 +3,7 @@ import ReviewFormContainer from "./ReviewFormContainer";
 import ReviewsContainer from "./ReviewsContainer";
 import IngredientsList from "./IngredientsList";
 import InstructionsTile from "./InstructionsTile";
+import EditBeer from "./EditBeer";
 
 const BeerShow = (props) => {
   const [beer, setBeer] = useState({});
@@ -25,6 +26,7 @@ const BeerShow = (props) => {
 
       const parsedBeerResponse = await response.json();
       setBeer(parsedBeerResponse.beer);
+      debugger;
       setMalts(parsedBeerResponse.malts);
       setHops(parsedBeerResponse.hops);
       setYeast(parsedBeerResponse.yeast);
@@ -94,6 +96,7 @@ const BeerShow = (props) => {
   return (
     <div>
       <h1 className="beer-title">{beer.name}</h1>
+      <EditBeer beer={beer} beerId={beerId} currentUser={currentUser} />
       <div className="column-7">
         <img className="show-page-image" src={beer.image_url}></img>
       </div>
