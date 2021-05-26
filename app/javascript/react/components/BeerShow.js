@@ -26,7 +26,6 @@ const BeerShow = (props) => {
 
       const parsedBeerResponse = await response.json();
       setBeer(parsedBeerResponse.beer);
-      debugger;
       setMalts(parsedBeerResponse.malts);
       setHops(parsedBeerResponse.hops);
       setYeast(parsedBeerResponse.yeast);
