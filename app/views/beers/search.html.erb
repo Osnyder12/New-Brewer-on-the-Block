@@ -1,11 +1,30 @@
-<h3>Search Result</h3>
+<h3 class="index-title">Search Result</h3>
 
 <% if @results == nil %>
-<p>No Results for your search!</p>
+<p class="no-results">No Results for your search!</p>
 <div class="back-link"><%= link_to 'Back to Home Page', beers_path %></div>
 <% else %> <% @results.each do |beer|%>
-<li>
-  <strong><%= link_to beer.name, "/beers/#{beer.id}" %></strong>
-</li>
+  <a href="/beers/#{beer.id}">
+    <div class="column-4">
+      <h3 class="beer-text"><%= beer.name %></h3>
+      <div class="beer-specs">
+        <ul>ABV:<%=  beer.abv%>%</ul>
+        <ul>IBU: <%= beer.ibu%></ul>
+    </div>
+  </div>
+  </a>
 </div>
 <% end %><% end %>
+
+
+<!-- <div>
+  <Link to={`/beers/${props.id}`}>
+    <div className="column-4">
+      <h3 className="beer-text">{props.name}</h3>
+      <div className="beer-specs">
+        <ul>ABV: {props.abv}%</ul>
+        <ul>IBU: {props.ibu}</ul>
+      </div>
+    </div>
+  </Link>
+</div> -->
