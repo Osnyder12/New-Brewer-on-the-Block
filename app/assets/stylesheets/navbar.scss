@@ -45,6 +45,11 @@ li > a {
   font-family: "Bebas Neue", cursive;
 }
 
-div.search-field {
-  height: fit-content;
+div.input-group {
+  margin: auto;
+  margin-right: 50px;
+}
+
+input#search.form-control {
+  margin-bottom: 0px;
 }
