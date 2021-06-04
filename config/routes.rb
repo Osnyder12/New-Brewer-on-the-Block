@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/beers/:id', to: 'homes#index'
   get '/punk_beers', to: 'homes#index'
   get '/punk_beers/:id', to: 'homes#index'
+  get '/search', to: 'beers#search'
 
   namespace :api do
     namespace :v1 do
