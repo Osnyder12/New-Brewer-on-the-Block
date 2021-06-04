@@ -32,8 +32,8 @@ class BeersController < ApplicationController
     if params[:search].blank?
       redirect_to(root_path, alert: "Empty Field!") and return
     else
-      @parameter = params[:search]
-      @results = Beer.where("name LIKE :search", search: "%#{@parameter}%")
+      @parameter = params[:search].downcase
+      @results = Beer.where("lower(name) LIKE :search", search: "%#{@parameter}%")
     end
   end
 
