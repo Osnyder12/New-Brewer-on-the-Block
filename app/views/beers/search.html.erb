@@ -1,0 +1,11 @@
+<h3>Search Result</h3>
+
+<% if @results == nil %>
+<p>No Results for your search!</p>
+<div class="back-link"><%= link_to 'Back to Home Page', beers_path %></div>
+<% else %> <% @results.each do |beer|%>
+<li>
+  <strong><%= link_to beer.name, "/beers/#{beer.id}" %></strong>
+</li>
+</div>
+<% end %><% end %>
