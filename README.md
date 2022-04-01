@@ -1,7 +1,5 @@
 # New Brewer on the Block
 
-[![Codeship Status for Osnyder12/New-Brewer-on-the-Block](https://app.codeship.com/projects/be6f19f3-4401-46c1-b0fc-7390b75a23b6/status?branch=master)](https://app.codeship.com/projects/443166)
-
 ## Description
 
 A site for those who are new to homebrewing where they can find basic recipes and instructions. Users can also review others recipes.
