@@ -27,7 +27,6 @@ class PunkAPIClient
   end
 
   def self.create_beers(parsed_response)
-    binding.pry
     parsed_response.each do |beer|
       new_beer = Beer.new(name: beer["name"], description: beer["description"], abv: beer["abv"], image_url: beer["image_url"], ibu: beer["ibu"], ph: beer["ph"], beer_volume_value: beer["volume"]["value"], beer_volume_unit: beer["volume"]["unit"], boil_volume_value: beer["boil_volume"]["value"], boil_volume_unit: beer["boil_volume"]["unit"], mash_temp_value: beer["method"]["mash_temp"][0]["temp"]["value"], mash_temp_unit: beer["method"]["mash_temp"][0]["temp"]["unit"], mash_temp_duration: beer["method"]["mash_temp"][0]["duration"], fermentation_value: beer["method"]["fermentation"]["temp"]["value"], fermentation_unit: beer["method"]["fermentation"]["temp"]["unit"], external_recipe: true, user: @user)
       new_beer.save!
