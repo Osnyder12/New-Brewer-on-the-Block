@@ -15,9 +15,7 @@ Rails.application.routes.draw do
       resources :beers, only: [:our_beers, :external_beers, :show] do
         resources :reviews, only: [:index, :create, :destroy]
       end
-      # resources :punk_beers, only: [:index, :show] do
-      #   resources :punk_reviews, only: [:index, :create, :destroy]
-      # end
+      resources :external_beers, only: [:index, :show]
     end
   end
 end

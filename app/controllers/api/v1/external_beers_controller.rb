@@ -1,7 +1,8 @@
-class Api::V1::PunkBeersController < ApplicationController
+class Api::V1::ExternalBeersController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def index
+    response = PunkApiService.new.call
     punk_beer = PunkBeer.all
     render json: punk_beer
   end
