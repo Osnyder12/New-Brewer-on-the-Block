@@ -3,8 +3,10 @@ class Api::V1::ExternalBeersController < ApplicationController
 
   def index
     response = PunkApiService.new.call
-    punk_beer = PunkBeer.all
-    render json: punk_beer
+
+    render json: { error: response.errors }, status: 401 unless response.success?
+
+    render json: response, status: 200
   end
 
   def show
