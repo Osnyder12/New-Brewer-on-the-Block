@@ -4,7 +4,7 @@ import ReviewFormContainer from "./ReviewFormContainer";
 import ReviewsContainer from "./ReviewsContainer";
 import InstructionsTile from "./InstructionsTile";
 
-const PunkBeerShow = (props) => {
+const ExternalBeerShow = (props) => {
   const [beer, setBeer] = useState({});
   const [malts, setMalts] = useState([]);
   const [hops, setHops] = useState([]);
@@ -17,7 +17,7 @@ const PunkBeerShow = (props) => {
 
   const fetchBeer = async () => {
     try {
-      const response = await fetch(`/api/v1/punk_beers/${beerId}`);
+      const response = await fetch(`/api/v1/external_beers/${beerId}`);
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
         throw new Error(errorMessage);
@@ -141,4 +141,4 @@ const PunkBeerShow = (props) => {
   );
 };
 
-export default PunkBeerShow;
+export default ExternalBeerShow;
