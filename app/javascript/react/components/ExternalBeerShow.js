@@ -22,7 +22,6 @@ const ExternalBeerShow = (props) => {
         const errorMessage = `${response.status} (${response.statusText})`;
         throw new Error(errorMessage);
       }
-
       const parsedBeerResponse = await response.json();
       setBeer(parsedBeerResponse.punk_beer);
       setMalts(parsedBeerResponse.malts);

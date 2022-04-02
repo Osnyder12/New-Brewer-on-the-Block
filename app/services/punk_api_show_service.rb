@@ -1,11 +1,10 @@
 class PunkApiShowService
   class PunkError < StandardError; end
   PunkResponse  = Struct.new :success?, :errors, :payload, keyword_init: true
-  
-  PUNK_URL = "https://api.punkapi.com/v2/beers/"
 
   def initialize(params = {})
     @beer_id = params[:beer_id] 
+    @request_url = "https://api.punkapi.com/v2/beers/"
   end
 
   def call
@@ -31,6 +30,6 @@ class PunkApiShowService
   def build_api_url(beer_id:)
     raise PunkError, 'No beer id provided' unless beer_id
 
-    PUNK_URL += beer_id.to_s
+    @request_url += beer_id.to_s
   end
 end
