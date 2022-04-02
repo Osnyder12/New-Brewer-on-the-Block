@@ -1,5 +1,6 @@
 class Api::V1::BeersController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
+
   def index
     render json: Beer.all
   end
