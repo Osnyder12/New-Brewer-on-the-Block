@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import PunkBeerShow from "./PunkBeerShow";
+import ExternalBeerShow from "./ExternalBeerShow";
 import PunkBeerTile from "./PunkBeerTile";
 
-const PunkBeerIndex = (props) => {
+const ExternalBeerIndex = (props) => {
   const [beers, setBeers] = useState([]);
 
   const fetchBeers = async () => {
     try {
-      const response = await fetch("/api/v1/punk_beers");
+      const response = await fetch("/api/v1/external_beers");
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
         const error = new Error(errorMessage);
@@ -53,4 +53,4 @@ const PunkBeerIndex = (props) => {
   );
 };
 
-export default PunkBeerIndex;
+export default ExternalBeerIndex;

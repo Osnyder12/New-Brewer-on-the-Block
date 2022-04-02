@@ -6,7 +6,7 @@ class Api::V1::ExternalBeersController < ApplicationController
 
     render json: { error: response.errors }, status: 401 unless response.success?
 
-    render json: response, status: 200
+    render json: response.payload, status: 200
   end
 
   def show
