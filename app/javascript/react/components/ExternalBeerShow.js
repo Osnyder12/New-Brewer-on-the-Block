@@ -24,12 +24,11 @@ const ExternalBeerShow = (props) => {
       }
 
       const parsedBeerResponse = await response.json();
-      let beer = parsedBeerResponse[0]
 
-      setBeer(beer);
-      setMalts(beer.ingredients.malt);
-      setHops(beer.ingredients.hops);
-      setYeast(beer.ingredients.yeast);
+      setBeer(parsedBeerResponse[0]);
+      setMalts(parsedBeerResponse[0].ingredients.malt);
+      setHops(parsedBeerResponse[0].ingredients.hops);
+      setYeast(parsedBeerResponse[0].ingredients.yeast);
       // setReviews(parsedBeerResponse.reviews);
       // setCurrentUser(parsedBeerResponse.current_user);
     } catch (error) {
