@@ -1,11 +1,8 @@
 class Api::V1::BeersController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
-  def our_beers
-    render json: Beer.all
-  end
 
-  def external_beers
-    render json: Beer.all.where(external_recipe: true)
+  def index
+    render json: Beer.all
   end
 
   def show
